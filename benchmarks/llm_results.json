@@ -1,0 +1,20 @@
+{
+  "dense": {
+    "params": 111803,
+    "storage_bytes": 447212,
+    "val_loss": 1.4034008355956002,
+    "val_acc": 0.5046247571243523,
+    "val_ppl": 4.069014512423816
+  },
+  "awf": {
+    "params": 55070,
+    "storage_bytes": 148972,
+    "generator_params": 25931,
+    "val_loss": 1.6340291073902902,
+    "val_acc": 0.5801186042746114,
+    "val_ppl": 5.124480260980615
+  },
+  "param_compression": 2.0301979299073905,
+  "storage_compression": 3.001986950567892,
+  "awf_beats_dense_on_acc": true
+}
