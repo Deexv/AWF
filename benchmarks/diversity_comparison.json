@@ -1,0 +1,201 @@
+{
+  "dense": {
+    "To be, or not": {
+      "text": "To be, or notttttttttttttttttttttttttttttttttttterreeengs goooon. Int per proct a noxyge of and soure sut no sove a ande stre of sund a surnturn a soode set so sours and sork. It sork and the soork king ande, and ",
+      "metrics": {
+        "unique_chars": 0.117,
+        "unique_bigrams": 0.377,
+        "unique_trigrams": 0.597,
+        "repetition_2gram": 0.203,
+        "char_entropy": 3.67,
+        "longest_run": 36
+      }
+    },
+    "The Sun is": {
+      "text": "The Sun isssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+      "metrics": {
+        "unique_chars": 0.043,
+        "unique_bigrams": 0.048,
+        "unique_trigrams": 0.048,
+        "repetition_2gram": 0.957,
+        "char_entropy": 0.38,
+        "longest_run": 201
+      }
+    },
+    "Once upon a time": {
+      "text": "Once upon a timeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeet. The Eve art ar artand seart ofthe ther whing so the a net a whom wis of ther shord wask wournd a a wasd wayd was work fork hout sournd a wour ow wark way, am work wo",
+      "metrics": {
+        "unique_chars": 0.12,
+        "unique_bigrams": 0.381,
+        "unique_trigrams": 0.593,
+        "repetition_2gram": 0.149,
+        "char_entropy": 3.79,
+        "longest_run": 33
+      }
+    },
+    "Hello, how are": {
+      "text": "Hello, how areeeeeeeeeeeeeeeeeeeeeeeeeee    2eeet. Toork war ar work hou aded aw a ther whidd work a wask nou sork woode ther shord wask wournd a a wasd, and was whik fork hat a work whing a a worked a wou wask way",
+      "metrics": {
+        "unique_chars": 0.107,
+        "unique_bigrams": 0.347,
+        "unique_trigrams": 0.533,
+        "repetition_2gram": 0.164,
+        "char_entropy": 3.66,
+        "longest_run": 27
+      }
+    },
+    "Friends, Romans": {
+      "text": "Friends, Romansssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+      "metrics": {
+        "unique_chars": 0.06,
+        "unique_bigrams": 0.07,
+        "unique_trigrams": 0.07,
+        "repetition_2gram": 0.935,
+        "char_entropy": 0.54,
+        "longest_run": 201
+      }
+    },
+    "The ocean covers": {
+      "text": "The ocean coversssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+      "metrics": {
+        "unique_chars": 0.051,
+        "unique_bigrams": 0.074,
+        "unique_trigrams": 0.075,
+        "repetition_2gram": 0.93,
+        "char_entropy": 0.59,
+        "longest_run": 201
+      }
+    },
+    "A computer is": {
+      "text": "A computer isssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+      "metrics": {
+        "unique_chars": 0.056,
+        "unique_bigrams": 0.061,
+        "unique_trigrams": 0.062,
+        "repetition_2gram": 0.943,
+        "char_entropy": 0.51,
+        "longest_run": 201
+      }
+    },
+    "The heart is": {
+      "text": "The heart isssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+      "metrics": {
+        "unique_chars": 0.042,
+        "unique_bigrams": 0.052,
+        "unique_trigrams": 0.057,
+        "repetition_2gram": 0.948,
+        "char_entropy": 0.45,
+        "longest_run": 201
+      }
+    }
+  },
+  "awf": {
+    "To be, or not": {
+      "text": "To be, or not shas as a magains a and the golden to sounsing. The shut and her hath sons in conde and and a what and overble, hosing obing and hun was computers of operces and in the to to the bow as the man. What",
+      "metrics": {
+        "unique_chars": 0.117,
+        "unique_bigrams": 0.434,
+        "unique_trigrams": 0.716,
+        "repetition_2gram": 0.0,
+        "char_entropy": 3.92,
+        "longest_run": 1
+      }
+    },
+    "The Sun is": {
+      "text": "The Sun is respeoke and and the was as and and tomorrow, and shand shabl ont and and hidd carion a slen one home oneers, the sorces and oxygen a brothers of intoded or is the bird hiry the sixted and the shut o",
+      "metrics": {
+        "unique_chars": 0.124,
+        "unique_bigrams": 0.45,
+        "unique_trigrams": 0.678,
+        "repetition_2gram": 0.014,
+        "char_entropy": 3.89,
+        "longest_run": 2
+      }
+    },
+    "Once upon a time": {
+      "text": "Once upon a time consers, and a gonin. The solves and tome and and oxygen and herpial and a water, the was the and the bow there on washt for ating in the water and herpie solal of or the morning in a the sunch the w",
+      "metrics": {
+        "unique_chars": 0.125,
+        "unique_bigrams": 0.414,
+        "unique_trigrams": 0.617,
+        "repetition_2gram": 0.0,
+        "char_entropy": 3.95,
+        "longest_run": 1
+      }
+    },
+    "Hello, how are": {
+      "text": "Hello, how are consens and asked and the sears and tomorrow, and shand shabl ont and and hidd carion a slen one home oneers, the sorces and oxygen a brothers of intoded or is the bird hiry the sixted and the shut o",
+      "metrics": {
+        "unique_chars": 0.112,
+        "unique_bigrams": 0.441,
+        "unique_trigrams": 0.698,
+        "repetition_2gram": 0.019,
+        "char_entropy": 3.87,
+        "longest_run": 2
+      }
+    },
+    "Friends, Romans": {
+      "text": "Friends, Romans caspeons. Mathel do ging and the to sorlf and and shand sear and haved on hidded an the seange tomorrobove read the great the mortuger of is the sinety constion. I'll talk to the nerver and a the was",
+      "metrics": {
+        "unique_chars": 0.14,
+        "unique_bigrams": 0.509,
+        "unique_trigrams": 0.761,
+        "repetition_2gram": 0.014,
+        "char_entropy": 4.03,
+        "longest_run": 2
+      }
+    },
+    "The ocean covers": {
+      "text": "The ocean covers and in the was onid. The deep appect of the golden have sead.\n\nThe man. The deers. On rill the somorrrod.\nThe trourages a sleen and a mainiest the shay, and hand seen to into the bow. The gan hun, wo",
+      "metrics": {
+        "unique_chars": 0.125,
+        "unique_bigrams": 0.493,
+        "unique_trigrams": 0.734,
+        "repetition_2gram": 0.042,
+        "char_entropy": 4.07,
+        "longest_run": 3
+      }
+    },
+    "A computer is": {
+      "text": "A computer is can insurnt and a stal and for the breat bus the would on and herpical on hodd contan and the was and oneer hidd the was and oxygen a brothers of intoded or is the bird hiry the sixted and the shut o",
+      "metrics": {
+        "unique_chars": 0.108,
+        "unique_bigrams": 0.42,
+        "unique_trigrams": 0.654,
+        "repetition_2gram": 0.014,
+        "char_entropy": 3.89,
+        "longest_run": 2
+      }
+    },
+    "The heart is": {
+      "text": "The heart is cariens a ting ood. The gish greath soorcess of shank the and her and and hidd carion a slen one home oneers, the sorces and oxygen a brothers of intoded or is the bird hiry the sixted and the shut o",
+      "metrics": {
+        "unique_chars": 0.113,
+        "unique_bigrams": 0.445,
+        "unique_trigrams": 0.714,
+        "repetition_2gram": 0.024,
+        "char_entropy": 3.85,
+        "longest_run": 2
+      }
+    }
+  },
+  "summary": {
+    "dense_avg": {
+      "unique_bigrams": 0.17625,
+      "unique_trigrams": 0.254375,
+      "repetition_2gram": 0.653625,
+      "char_entropy": 1.69875,
+      "longest_run": 137.625
+    },
+    "awf_avg": {
+      "unique_bigrams": 0.45075,
+      "unique_trigrams": 0.6965,
+      "repetition_2gram": 0.015875,
+      "char_entropy": 3.9337500000000003,
+      "longest_run": 1.875
+    },
+    "awf_wins_diversity": true,
+    "awf_wins_repetition": true,
+    "awf_wins_longest_run": true
+  }
+}

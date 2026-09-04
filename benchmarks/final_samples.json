@@ -1,26 +1,26 @@
 {
-  "To be, or not": {
-    "dense": "To be, or note o o e o e eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeseeeeeeeeee",
-    "awf": "To be, or not to gream the forsulft,\nAnd peat distonical organ at tof sontater to stitau bethee 20skifoxioals s syurdec, to smed then"
+  "dense": {
+    "To be, or not": "To be, or notttttttttttttttttttttttttttttttttttterreeengs goooon. Int per proct a noxyge of and soure sut no sove a ande stre of sund",
+    "The Sun is": "The Sun isssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+    "Once upon a time": "Once upon a timeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeet. The Eve art ar artand seart ofthe ther whing so the a net a whom wis of ther shord wa",
+    "Hello, how are": "Hello, how areeeeeeeeeeeeeeeeeeeeeeeeeee    2eeet. Toork war ar work hou aded aw a ther whidd work a wask nou sork woode ther shord wa",
+    "Friends, Romans": "Friends, Romansssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+    "The ocean covers": "The ocean coversssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
   },
-  "The Sun is": {
-    "dense": "The Sun is is in in in in in in in in in in in in in rara a a in a in in a in in in in a in in in in in in in in in in in ind in i",
-    "awf": "The Sun is as again. The did the king would bruth. It wen.\n\nThe the in countur and consitigse tor founcter and arome composhe a ch"
+  "awf_fp16": {
+    "To be, or not": "To be, or not shas as a magains a and the golden to sounsing. The shut and her hath sons in conde and and a what and overble, hosing ",
+    "The Sun is": "The Sun is respeoke and and the was as and and tomorrow, and shand shabl ont and and hidd carion a slen one home oneers, the sorce",
+    "Once upon a time": "Once upon a time consers, and a gonin. The solves and tome and and oxygen and herpial and a water, the was the and the bow there on wash",
+    "Hello, how are": "Hello, how are consens and asked and the sears and tomorrow, and shand shabl ont and and hidd carion a slen one home oneers, the sorce",
+    "Friends, Romans": "Friends, Romans caspeons. Mathel do ging and the to sorlf and and shand sear and haved on hidded an the seange tomorrobove read the gre",
+    "The ocean covers": "The ocean covers and in the was onid. The deep appect of the golden have sead.\n\nThe man. The deers. On rill the somorrrod.\nThe trourages"
   },
-  "Once upon": {
-    "dense": "Once upone pe pe pe pe pe pe pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp",
-    "awf": "Once upon and caref the drease: this the carful ned the gared threed and and loger fushee it the cemitle and too he courbld athe "
-  },
-  "Hello, how": {
-    "dense": "Hello, howo o o o o o o o o o o o o o o o o e e e eeereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeseeeeeeeeee",
-    "awf": "Hello, how the cerebrum, that\nWammiaicemions aus retworks and on. Elup\nTo the his e choncerbrd and ardeas and ardeat ro1, tat tt s"
-  },
-  "Friends, Romans": {
-    "dense": "Friends, Romanstistisisisisisisisidy sididy lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
-    "awf": "Friends, Romans, they heart caveom the riddle caway ater that broboret him s thee wo to chanould thench sunced breat bear cont funers a"
-  },
-  "The ocean covers": {
-    "dense": "The ocean covers ge ges g a g g a a a gr o a a o a a oooooo ooo a a o o o o ay ay o o e e e y e e y e e y e e y y y y y y y y y y yy? y.",
-    "awf": "The ocean covers the king ings eand coxygacess organ orect canert band contatrgaing in a asxynid athe thyme canoverse and rove rat ravee"
+  "awf_int8": {
+    "To be, or not": "To be, or notw's a a nefutROp rieds ay ay ay corl allor\nY-SEsp n,h ainoririr:\nJUNY:NYeds, GT\nNYeskscJULT5. TRRRRI'y revix's Ryour's r",
+    "The Sun is": "The Sun is a for at waive shen a nyg shivers aty ay ay ay ay ay workir,\nY-SERY: arp arid. Mauren a wan wan. Hor wod. way a ay ay a",
+    "Once upon a time": "Once upon a timentes ay ay ay ay ay ay ay ay ay corl allor\nY-SERY:\nANY:\nNYears.\nLe Reeeener od. Thern hiveltBB-od. brow's briviononormir",
+    "Hello, how are": "Hello, how are at wo lixixixixixixixixixixixixivinver thives abe abrivivioner\n17's br\nFor wor shen hiveluixixixiver, athers iviverybro",
+    "Friends, Romans": "Friends, Romans aty ay\nTo awariy thive, abre mppethives\nwhixixive ivive mppett sthiverme wh\nEveive he wouge aunf shern ageree ay thou a",
+    "The ocean covers": "The ocean covers aty ay ay ay ay ay ay ay ay ay corl allor\nY-SERY:\nANY:\nNYears.\nLe Reeeener od. Thern hiveltBB-od. brow's briviononormir"
   }
 }

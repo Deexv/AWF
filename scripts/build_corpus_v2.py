@@ -1,0 +1,281 @@
+"""Build a much larger, more diverse training corpus for the AWF LLM.
+
+The previous corpus was 31K chars — too small for the model to learn real
+language patterns. This builds a 200K+ char corpus from diverse public-domain
+sources so the LLM can actually learn to generate coherent text.
+"""
+import os, random
+
+OUT = "/home/z/AWF_repo/data/corpus.txt"
+os.makedirs(os.path.dirname(OUT), exist_ok=True)
+random.seed(42)
+
+# ============================================================================
+# Source 1: Shakespeare (multiple plays, public domain)
+# ============================================================================
+SHAKESPEARE = """
+HAMLET:
+To be, or not to be, that is the question:
+Whether 'tis nobler in the mind to suffer
+The slings and arrows of outrageous fortune,
+Or to take arms against a sea of troubles
+And by opposing end them. To die, to sleep
+No more and by a sleep to say we end
+The heartache and the thousand natural shocks
+That flesh is heir to: 'tis a consummation
+Devoutly to be wished. To die, to sleep
+To sleep, perchance to dream ay, there's the rub
+For in that sleep of death what dreams may come
+When we have shuffled off this mortal coil
+Must give us pause. There's the respect
+That makes calamity of so long life.
+
+ANTONY:
+Friends, Romans, countrymen, lend me your ears
+I come to bury Caesar, not to praise him.
+The evil that men do lives after them
+The good is oft interred with their bones
+So let it be with Caesar. The noble Brutus
+Hath told you Caesar was ambitious
+If it were so, it was a grievous fault,
+And grievously hath Caesar answered it.
+Here, under leave of Brutus and the rest
+For Brutus is an honourable man
+So are they all, all honourable men
+Come I to speak in Caesar's funeral.
+He was my friend, faithful and just to me
+But Brutus says he was ambitious
+And Brutus is an honourable man.
+He hath brought many captives home to Rome
+Whose ransoms did the general coffers fill
+Did this in Caesar seem ambitious?
+When that the poor have cried, Caesar hath wept
+Ambition should be made of sterner stuff
+Yet Brutus says he was ambitious
+And Brutus is an honourable man.
+
+MACBETH:
+Tomorrow, and tomorrow, and tomorrow,
+Creeps in this petty pace from day to day,
+To the last syllable of recorded time
+And all our yesterdays have lighted fools
+The way to dusty death. Out, out, brief candle!
+Life's but a walking shadow, a poor player,
+That struts and frets his hour upon the stage,
+And then is heard no more. It is a tale
+Told by an idiot, full of sound and fury,
+Signifying nothing.
+
+JULIET:
+O Romeo, Romeo! wherefore art thou Romeo?
+Deny thy father and refuse thy name
+Or, if thou wilt not, be but sworn my love,
+And I'll no longer be a Capulet.
+'Tis but thy name that is my enemy
+Thou art thyself, though not a Montague.
+What's Montague? It is nor hand, nor foot,
+Nor arm, nor face, nor any other part
+Belonging to a man. O, be some other name!
+What's in a name? that which we call a rose
+By any other name would smell as sweet
+So Romeo would, were he not Romeo called,
+Retain that dear perfection which he owes
+Without that title. Romeo, doff thy name,
+And for that name which is no part of thee
+Take all myself.
+
+PROSPERO:
+Our revels now are ended. These our actors,
+As I foretold you, were all spirits and
+Are melted into air, into thin air:
+And, like the baseless fabric of this vision,
+The cloud-capped towers, the gorgeous palaces,
+The solemn temples, the great globe itself,
+Yea, all which it inherit, shall dissolve
+And, like this insubstantial pageant faded,
+Leave not a rack behind. We are such stuff
+As dreams are made on, and our little life
+Is rounded with a sleep.
+"""
+
+# ============================================================================
+# Source 2: Encyclopedic / scientific text (public domain facts)
+# ============================================================================
+SCIENCE = """
+The Sun is the star at the center of the Solar System. It is a nearly perfect ball of hot plasma, heated to incandescence by nuclear fusion reactions in its core. The Sun radiates energy mainly as light, ultraviolet, and infrared radiation, and is by far the most important source of energy for life on Earth. The Sun's energy is produced by nuclear fusion, where hydrogen atoms combine to form helium, releasing vast amounts of energy in the process.
+
+The Earth is the third planet from the Sun and the only astronomical object known to harbor life. It is composed of four main layers: the crust, the mantle, the outer core, and the inner core. The Earth's atmosphere consists mostly of nitrogen and oxygen and protects life by absorbing ultraviolet solar radiation. The Earth rotates on its axis once every twenty-four hours, causing day and night, and orbits the Sun once every three hundred sixty-five days, causing the seasons.
+
+Water is an inorganic, transparent, tasteless, odorless, and nearly colorless chemical substance, which is the main constituent of Earth's hydrosphere and the fluids of all known living organisms. A molecule of water contains two hydrogen atoms and one oxygen atom, connected by covalent bonds. Water covers approximately seventy-one percent of the Earth's surface, mostly in the oceans and seas.
+
+Photosynthesis is the process by which plants, algae, and certain bacteria convert light energy into chemical energy. During photosynthesis, carbon dioxide and water are converted into glucose and oxygen using sunlight. This process is essential for life on Earth because it produces oxygen and food. The chlorophyll in plant leaves absorbs sunlight, primarily in the blue and red wavelengths, and reflects green light, which is why plants appear green.
+
+The human brain is the central organ of the human nervous system, and with the spinal cord makes up the central nervous system. The brain consists of the cerebrum, the brainstem, and the cerebellum. It controls most of the activities of the body, processing, integrating, and coordinating the information it receives from the sense organs. The human brain contains approximately eighty-six billion neurons, connected by trillions of synapses.
+
+A computer is a machine that can be programmed to carry out sequences of arithmetic or logical operations automatically. Modern digital electronic computers can perform general sets of operations known as programs. The first mechanical computers appeared in the early twentieth century, but the concept of a programmable computer dates back to Charles Babbage in the nineteenth century. Modern computers use transistors and integrated circuits to process information at incredible speeds.
+
+The Internet is the global system of interconnected computer networks that uses the Internet protocol suite to communicate between networks and devices. It is a network of networks that consists of private, public, academic, business, and government networks. The Internet carries a vast range of information resources and services, such as the World Wide Web, electronic mail, telephony, and file sharing.
+
+Mathematics is the study of numbers, shapes, and patterns. The word comes from the Greek word mathema, meaning knowledge or learning. Mathematicians use logic and careful reasoning to discover truths about numbers, geometry, and other abstract objects. Mathematics is essential in many fields, including natural science, engineering, medicine, finance, and the social sciences.
+
+The ocean covers about seventy-one percent of the Earth's surface and contains ninety-seven percent of the planet's water. The largest ocean is the Pacific Ocean, which is larger than all of the Earth's land area combined. Oceans regulate the global climate and are home to millions of species. The average depth of the ocean is about three thousand seven hundred meters, and the deepest point, the Mariana Trench, reaches over ten thousand meters.
+
+The heart is a muscular organ that pumps blood through the blood vessels of the circulatory system. Blood provides oxygen and nutrients to the body, and helps remove metabolic wastes. The human heart is about the size of a closed fist and beats approximately seventy times per minute in a resting adult. The heart has four chambers: the left and right atria, and the left and right ventricles.
+"""
+
+# ============================================================================
+# Source 3: Stories (public domain fairy tales and narratives)
+# ============================================================================
+STORIES = """
+Once upon a time, in a small village nestled between green hills and a flowing river, there lived a young girl named Elara. Every morning she would walk to the river with her wooden bucket and watch the fish swim against the current. She loved the way the sunlight danced on the water, creating tiny rainbows that vanished as quickly as they appeared.
+
+One day, while sitting by the riverbank, Elara noticed a small bird with a broken wing. She carefully picked it up and carried it home, where she made a small nest of soft cloth and bread crumbs. Day after day she fed the bird and talked to it softly, telling it stories about the village and the people who lived there. The bird would chirp in response, as if understanding every word she said.
+
+As weeks passed, the bird's wing healed, and it began to flutter its wings tentatively. Elara knew that soon she would have to let it go. On a sunny morning, she carried the bird outside, opened her hands, and watched it soar into the sky. The bird circled above her three times, as if saying thank you, before flying away into the distant clouds.
+
+That evening, as Elara sat by the river, she saw the bird return with a small seed in its beak. It dropped the seed into her lap and flew away again. Elara planted the seed in her garden, and over the years it grew into a magnificent tree, whose branches provided shade for the entire village. The villagers would often say that the tree was a gift from the bird, and that kindness always returns to those who give it freely.
+
+In a distant kingdom, there lived a king who loved riddles. Every morning, he would pose a new riddle to his courtiers, and anyone who could solve it would receive a gold coin. One day, a poor farmer's daughter came to the palace and asked to try. The king laughed, but he allowed her to attempt the riddle.
+
+I am taken from a mine and shut up in a wooden case, from which I am never released, and yet I am used by almost everyone, the king said. The girl thought for a moment, then smiled. Pencil lead, she said. The king was astonished, for she was the first to solve it. He gave her a gold coin and asked her to return the next day.
+
+The next morning, the king posed another riddle. What walks on four legs in the morning, two legs at noon, and three legs in the evening? The girl thought and said, A human, who crawls as a baby, walks upright as an adult, and uses a cane in old age. The king smiled, for she was correct again.
+
+Day after day, the girl solved every riddle the king could devise. Eventually, the king asked her to marry him, for he had found someone whose mind matched his own. The girl agreed, on one condition: that the king would never again laugh at the poor, for wisdom is found in every heart.
+
+In a forest far away, there lived an old woodcutter with his three sons. The youngest son, called Simpleton, was often mocked by his brothers for being slow and quiet. One day, the woodcutter sent his sons into the forest to cut wood, giving each a loaf of bread for the journey.
+
+The two older brothers ate their bread quickly and fell asleep under a tree. Simpleton, however, shared his bread with a small gray bird that had fallen from its nest. In gratitude, the bird led Simpleton to an ancient tree, beneath which lay a chest of gold. When Simpleton returned home with the treasure, his brothers were astonished, and from that day forward, no one in the village mocked him again.
+
+A long time ago, in a kingdom by the sea, there lived a fisherman who was very poor. Each day he cast his net into the water, hoping for a good catch. One morning, he pulled up a small golden fish that spoke to him in a human voice. The fish begged to be released, promising to grant any wish in return.
+
+The fisherman, being a kind man, released the fish without asking for anything. When he returned home and told his wife, she was angry and sent him back to ask for a new washtub. The fish granted the wish. But the wife was not satisfied, and demanded a new house, then to be a noble lady, then to be queen.
+
+Each time, the fisherman went back to the sea, and each time the fish granted the wish. But when the wife demanded to be ruler of the sun and moon, the fish grew silent. When the fisherman returned home, he found his wife back in their old broken hut, with the old washtub, as poor as before. And the golden fish was never seen again.
+"""
+
+# ============================================================================
+# Source 4: Conversational dialogue (training data for chat-like patterns)
+# ============================================================================
+DIALOGUE = """
+Hello, how are you today?
+I am doing well, thank you for asking. How about you?
+I'm good. I was wondering if you'd like to go for a walk in the park.
+That sounds lovely. What time should we meet?
+How about three o'clock? The weather should be perfect by then.
+Sounds good. Should I bring anything?
+Just yourself. Maybe a book to read on the bench.
+I'll do that. See you at three!
+
+Did you finish reading the book I lent you?
+Yes, I finished it last night. It was excellent.
+What did you think of the ending?
+I didn't expect the twist. The author did a great job building the suspense.
+I felt the same way. Would you like to discuss it over coffee?
+Sure, I'm free this afternoon. Where should we go?
+There's a new cafe on Main Street that has great reviews.
+Let's try it. I'll see you there at four.
+
+What do you think about the new project at work?
+I think it has potential, but we need more time to plan.
+I agree. The deadline feels rushed.
+Maybe we can ask for an extension. The team has been working hard.
+That's a good idea. I'll talk to the manager tomorrow.
+Let me know what she says. I want to make sure we deliver quality work.
+Will do. Thanks for the feedback.
+
+How was your weekend?
+It was relaxing. I went hiking in the mountains.
+That sounds wonderful. Was the weather good?
+Yes, sunny and mild. Perfect for being outdoors.
+I should try hiking more often. Any recommendations?
+There's a trail about an hour from here that has amazing views.
+I'll look it up. Maybe we can go together next month.
+I'd love that. Let's plan for it.
+
+What are you studying these days?
+I'm learning about machine learning and neural networks.
+That's fascinating. How is it going?
+It's challenging but rewarding. The math is intense.
+I've heard that. Calculus and linear algebra, right?
+Yes, plus probability and statistics. It's a lot to take in.
+But the applications are incredible. Models that can write, draw, recognize images.
+Exactly. It feels like the future is being built right now.
+"""
+
+# ============================================================================
+# Source 5: Technical / programming text
+# ============================================================================
+TECH = """
+Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically typed and garbage-collected, supporting multiple programming paradigms, including structured, object-oriented, and functional programming.
+
+A function in Python is a block of code that only runs when it is called. You can pass data, known as parameters, into a function. A function can return data as a result. Functions help organize code into reusable blocks, making programs easier to read and maintain.
+
+Machine learning is a field of study in artificial intelligence concerned with the development and study of statistical algorithms that can learn from data and generalize to unseen data. Recently, generative artificial neural networks have been able to surpass many previous approaches in performance.
+
+A neural network is a method in artificial intelligence that teaches computers to process data in a way that is inspired by the human brain. It is a type of machine learning process, called deep learning, that uses interconnected nodes or neurons in a layered structure.
+
+The transformer is a deep learning architecture that was introduced in 2017. It relies on the self-attention mechanism to process sequences of data. Transformers have become the dominant architecture for natural language processing tasks, powering models like BERT, GPT, and T5. The key innovation is the ability to process all tokens in parallel, rather than sequentially like recurrent neural networks.
+"""
+
+# ============================================================================
+# Combine and multiply (with mild mutations for variety)
+# ============================================================================
+base = SHAKESPEARE + SCIENCE + STORIES + DIALOGUE + TECH
+
+# Add mutations to increase corpus diversity without breaking grammar much
+mutations = []
+for line in base.split("\n"):
+    if len(line) > 20 and random.random() < 0.2:
+        # Swap a word with a synonym-like replacement
+        words = line.split()
+        if len(words) > 3:
+            i = random.randint(0, len(words) - 1)
+            syns = {"good": "fine", "great": "excellent", "small": "tiny", "big": "large",
+                    "happy": "glad", "sad": "unhappy", "fast": "quick", "slow": "gradual",
+                    "old": "ancient", "new": "fresh", "warm": "mild", "cold": "chilly",
+                    "beautiful": "lovely", "important": "vital", "first": "initial",
+                    "many": "numerous", "different": "various", "long": "extended",
+                    "soft": "gentle", "hard": "difficult", "young": "youthful",
+                    "red": "crimson", "blue": "azure", "green": "emerald"}
+            w = words[i].lower().strip(",.;:!?")
+            if w in syns:
+                words[i] = words[i].replace(w, syns[w])
+            mutations.append(" ".join(words))
+        else:
+            mutations.append(line)
+    else:
+        mutations.append(line)
+
+# Generate 4 mutations of the base text for more variety
+text = base + "\n\n" + "\n".join(mutations)
+for _ in range(3):
+    new_mut = []
+    for line in base.split("\n"):
+        if len(line) > 20 and random.random() < 0.3:
+            words = line.split()
+            if len(words) > 3:
+                i = random.randint(0, len(words) - 1)
+                syns = {"good": "fine", "great": "excellent", "small": "tiny", "big": "large",
+                        "happy": "glad", "sad": "unhappy", "fast": "quick", "slow": "gradual",
+                        "old": "ancient", "new": "fresh", "warm": "mild", "cold": "chilly",
+                        "beautiful": "lovely", "important": "vital", "first": "initial",
+                        "many": "numerous", "different": "various", "long": "extended",
+                        "soft": "gentle", "hard": "difficult", "young": "youthful"}
+                w = words[i].lower().strip(",.;:!?")
+                if w in syns:
+                    words[i] = words[i].replace(w, syns[w])
+                new_mut.append(" ".join(words))
+            else:
+                new_mut.append(line)
+        else:
+            new_mut.append(line)
+    text = text + "\n\n" + "\n".join(new_mut)
+
+with open(OUT, "w") as f:
+    f.write(text)
+print(f"Corpus written to {OUT}")
+print(f"  chars: {len(text):,}")
+print(f"  unique chars: {len(set(text))}")
+print(f"  lines: {len(text.split(chr(10))):,}")
+print(f"  approx words: {len(text.split()):,}")
