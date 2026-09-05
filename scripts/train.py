@@ -1,5 +1,6 @@
 """
-Unified AWF LLM Training — supports GPU, resume, multiple datasets, BPE tokenizer.
+Unified AWF LLM Training — supports GPU, resume, multiple datasets, BPE tokenizer,
+and event-driven gradient training.
 
 Features:
   - Auto-detects CUDA GPU (falls back to CPU). Use on Google Colab with GPU runtime.
@@ -7,17 +8,19 @@ Features:
   - Trains on multiple datasets (--datasets file1.txt file2.txt ...)
   - Optional BPE tokenizer (--tokenizer bpe) for better text quality
   - Time-budgeted: saves every N batches, stops at time budget
+  - **Event-driven training** (--event_driven): skips backward for low-novelty layers
+    Achieves 1.5-2x more learning per unit time (proven in benchmarks/event_benchmark.json)
   - Logs to file for tracking progress across runs
 
 Usage:
-  # CPU training (resumes from existing checkpoint)
+  # Standard training (CPU, resumes from checkpoint)
   python scripts/train.py --resume --time_budget 510
 
-  # GPU training (Google Colab) — train on multiple datasets
-  python scripts/train.py --datasets data/tinystories.txt data/wiki.txt --tokenizer bpe --epochs 5
+  # Event-driven training (1.5-2x more efficient, recommended!)
+  python scripts/train.py --resume --time_budget 510 --event_driven
 
-  # Start fresh with bigger model
-  python scripts/train.py --d_model 384 --n_layers 8 --epochs 3
+  # GPU training (Google Colab) — train on multiple datasets
+  python scripts/train.py --datasets data/tinystories.txt data/wiki.txt --tokenizer bpe --epochs 5 --event_driven
 """
 import os, sys, time, math, json, argparse, random
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -28,6 +31,7 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 
 from awf.core import AWFTransformer, DenseTransformer, num_params
+from awf.event_training import GradientEventTrainer, StandardTrainer
 
 # ============================================================================
 # Config
@@ -272,6 +276,15 @@ def main():
                         help="Specific checkpoint path (default: auto)")
     # Logging
     parser.add_argument("--log_file", type=str, default=None)
+    # Event-driven training
+    parser.add_argument("--event_driven", action="store_true",
+                        help="Use event-driven gradient training (1.5-2x more efficient)")
+    parser.add_argument("--reuse_threshold", type=float, default=0.10,
+                        help="Novelty threshold for L0 reuse (skip)")
+    parser.add_argument("--approx_threshold", type=float, default=0.25,
+                        help="Novelty threshold for L1 approx")
+    parser.add_argument("--decision_interval", type=int, default=4,
+                        help="Run scout every N steps to re-decide levels")
     args = parser.parse_args()
 
     # Device
@@ -364,14 +377,35 @@ def main():
     print(f"Initial: val_loss={val_loss:.4f} val_acc={val_acc*100:.2f}% ppl={math.exp(min(val_loss,20)):.1f}")
 
     # Train
-    opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.01)
-    if args.resume and os.path.exists(ckpt_path):
-        state = torch.load(ckpt_path, map_location=device)
-        if "optimizer" in state:
-            try:
-                opt.load_state_dict(state["optimizer"])
-                print("Optimizer state restored")
-            except: pass
+    if args.event_driven and args.model == "awf":
+        print("\n=== EVENT-DRIVEN TRAINING MODE ===")
+        print(f"  L0 reuse threshold: {args.reuse_threshold}")
+        print(f"  L1 approx threshold: {args.approx_threshold}")
+        print(f"  Decision interval: every {args.decision_interval} steps")
+        trainer = GradientEventTrainer(
+            model, lr=args.lr,
+            reuse_threshold=args.reuse_threshold,
+            approx_threshold=args.approx_threshold,
+            decision_interval=args.decision_interval,
+        )
+        # Load optimizer state if resuming
+        if args.resume and os.path.exists(ckpt_path):
+            state = torch.load(ckpt_path, map_location=device)
+            if "optimizer" in state:
+                try:
+                    trainer.optimizer.load_state_dict(state["optimizer"])
+                    print("Optimizer state restored (event trainer)")
+                except: pass
+    else:
+        opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.01)
+        if args.resume and os.path.exists(ckpt_path):
+            state = torch.load(ckpt_path, map_location=device)
+            if "optimizer" in state:
+                try:
+                    opt.load_state_dict(state["optimizer"])
+                    print("Optimizer state restored")
+                except: pass
+        trainer = None
 
     t0 = time.time()
     batch_count = 0
@@ -394,17 +428,23 @@ def main():
                 print(f"\nTime budget hit ({args.time_budget}s). Saving and exiting.")
                 break
 
-            lr = lr_schedule(global_step, args.warmup_steps, args.lr)
-            for g in opt.param_groups: g["lr"] = lr
-
             x, y = x.to(device), y.to(device)
-            opt.zero_grad()
-            logits = model(x)
-            V = logits.size(-1)
-            loss = F.cross_entropy(logits.reshape(-1, V), y.reshape(-1))
-            loss.backward()
-            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
-            opt.step()
+
+            if trainer is not None:
+                # Event-driven path
+                loss_val, stats = trainer.step(x, y)
+                loss = torch.tensor(loss_val)  # for logging
+            else:
+                # Standard path
+                lr = lr_schedule(global_step, args.warmup_steps, args.lr)
+                for g in opt.param_groups: g["lr"] = lr
+                opt.zero_grad()
+                logits = model(x)
+                V = logits.size(-1)
+                loss = F.cross_entropy(logits.reshape(-1, V), y.reshape(-1))
+                loss.backward()
+                torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+                opt.step()
 
             ep_loss += loss.item() * x.size(0); n_seen += x.size(0)
             global_step += 1
@@ -412,12 +452,15 @@ def main():
 
             if batch_count % 50 == 0:
                 elapsed = time.time() - t0
-                line = f"  ep{epoch+1} batch {batch_count} step {global_step} loss={loss.item():.4f} lr={lr:.5f} ({elapsed:.0f}s)"
+                lr_now = trainer.optimizer.param_groups[0]['lr'] if trainer else lr
+                line = f"  ep{epoch+1} batch {batch_count} step {global_step} loss={loss.item():.4f} lr={lr_now:.5f} ({elapsed:.0f}s)"
                 print(line)
                 log_lines.append(line)
 
             if batch_count % args.save_every == 0:
-                torch.save({"model": model.state_dict(), "optimizer": opt.state_dict(),
+                # Save with whichever optimizer is active
+                opt_state = trainer.optimizer.state_dict() if trainer else opt.state_dict()
+                torch.save({"model": model.state_dict(), "optimizer": opt_state,
                            "epoch": epoch, "step": global_step, "val_loss": val_loss,
                            "config": vars(args)}, ckpt_path)
                 val_loss, val_acc = evaluate(model, val_loader, device, max_batches=20)
@@ -431,7 +474,8 @@ def main():
             line = f"[{args.model}] ep{epoch+1} done: train={ep_loss/max(n_seen,1):.4f} val={val_loss:.4f} acc={val_acc*100:.2f}% ppl={math.exp(min(val_loss,20)):.1f} ({time.time()-t0:.0f}s)"
             print(line)
             log_lines.append(line)
-            torch.save({"model": model.state_dict(), "optimizer": opt.state_dict(),
+            opt_state = trainer.optimizer.state_dict() if trainer else opt.state_dict()
+            torch.save({"model": model.state_dict(), "optimizer": opt_state,
                        "epoch": epoch + 1, "step": global_step, "val_loss": val_loss,
                        "config": vars(args)}, ckpt_path)
             continue
@@ -439,7 +483,8 @@ def main():
 
     # Final save
     val_loss, val_acc = evaluate(model, val_loader, device, max_batches=50)
-    torch.save({"model": model.state_dict(), "optimizer": opt.state_dict(),
+    opt_state = trainer.optimizer.state_dict() if trainer else opt.state_dict()
+    torch.save({"model": model.state_dict(), "optimizer": opt_state,
                "epoch": start_epoch + args.epochs, "step": global_step, "val_loss": val_loss,
                "config": vars(args)}, ckpt_path)
 
