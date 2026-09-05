@@ -110,31 +110,21 @@ def main():
     val_loader = DataLoader(val_ds, batch_size=BATCH)
     print(f"Train: {len(train_ds):,} samples, Val: {len(val_ds):,}")
 
-    # Build AWF model and load existing checkpoint
+    # Build AWF model — START FROM SCRATCH for fair comparison
     def build_model():
-        torch.manual_seed(0)
+        torch.manual_seed(42)  # fixed seed for reproducibility
         m = AWFTransformer(vocab_size=256, d_model=256, n_layers=6, n_heads=8, block_size=BLOCK,
                           residual_rank=16, sparse_k=256,
                           gen_kwargs=dict(n_fourier=16, hidden=128, n_layers=3), gen_grid=16)
-        # Load pre-trained checkpoint so both start from the same place
-        ckpt = os.path.join(CKPT_DIR, "awf_10m.pt")
-        if os.path.exists(ckpt):
-            state = torch.load(ckpt, map_location="cpu")
-            m.load_state_dict(state["model"], strict=False)
-            try: m.activate_sparse_corrections()
-            except: pass
+        # No checkpoint loading — start fresh so we can measure real learning
         return m
 
-    # Initial eval
-    print("\nLoading checkpoint...")
+    # Initial eval (from scratch — both start identically)
+    print("\nBuilding fresh models (random init) for fair comparison...")
     init_model = build_model()
     init_val_loss, init_val_acc = evaluate(init_model, val_loader)
     print(f"Initial val_loss={init_val_loss:.4f} val_acc={init_val_acc*100:.2f}% ppl={math.exp(min(init_val_loss,20)):.1f}")
     init_step = 0
-    ckpt = os.path.join(CKPT_DIR, "awf_10m.pt")
-    if os.path.exists(ckpt):
-        init_step = torch.load(ckpt, map_location="cpu").get("step", 0)
-    print(f"Starting from step {init_step}")
     del init_model
 
     # ============================================================================
