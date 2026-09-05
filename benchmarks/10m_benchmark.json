@@ -1,0 +1,164 @@
+{
+  "summary": {
+    "dense": {
+      "params": 4903168,
+      "val_loss": 2.067826671898365,
+      "val_acc": 0.3375,
+      "val_ppl": 7.90761857939236,
+      "storage_bytes": 19612672
+    },
+    "awf": {
+      "params": 622048,
+      "val_loss": 2.404987597465515,
+      "val_acc": 0.31478271484375,
+      "val_ppl": 11.078292882424865,
+      "storage_bytes": 2166602,
+      "generator_params": 42939
+    },
+    "param_compression": 7.882298472143629,
+    "storage_compression": 9.052272637060245,
+    "dense_avg_metrics": {
+      "unique_bigrams": 0.1215,
+      "unique_trigrams": 0.19266666666666665,
+      "repetition_2gram": 0.6445,
+      "char_entropy": 1.3266666666666667,
+      "longest_run": 69.5
+    },
+    "awf_avg_metrics": {
+      "unique_bigrams": 0.38399999999999995,
+      "unique_trigrams": 0.6896666666666667,
+      "repetition_2gram": 0.006999999999999999,
+      "char_entropy": 3.7416666666666667,
+      "longest_run": 2.0
+    },
+    "awf_wins_diversity": true,
+    "awf_wins_repetition": true,
+    "awf_wins_longest_run": true
+  },
+  "samples": {
+    "dense": {
+      "Once upon a time": {
+        "text": "Once upon a time tit te t t at t t t ck titepute utt tuet te utt t t t tt t tut ite t taritate utitut it itt puttte t tutit tutt ttt tututut ut tutututitutatrtututututeaututtutatttutttetutitatuit tutututtut tuuteutrr",
+        "metrics": {
+          "unique_bigrams": 0.195,
+          "unique_trigrams": 0.383,
+          "repetition_2gram": 0.079,
+          "char_entropy": 2.51,
+          "longest_run": 3
+        }
+      },
+      "The little girl": {
+        "text": "The little girlelitelelele le elllleeellleeeeeellleleeee leelelllllel lllllllllllellllllllalellllllllelllll lllllellllllillllellllllllllllellllllellllllllllllllllllllealllelllllllllllelllllllllllllllllllllllllllllll",
+        "metrics": {
+          "unique_bigrams": 0.107,
+          "unique_trigrams": 0.197,
+          "repetition_2gram": 0.654,
+          "char_entropy": 1.32,
+          "longest_run": 31
+        }
+      },
+      "A boy named Tom": {
+        "text": "A boy named Tom ney neneny ammennnnnnnnnnennnnnnnnnnenennnennnnnnnn nnnn nnnnnnnnnnennnnnnnnennnnnnnnnnnnnn nnnntnnnnnnninnnnennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnennnnnnnennnennnnnnnnnn nnennnnnnennnnnnnnnn",
+        "metrics": {
+          "unique_bigrams": 0.126,
+          "unique_trigrams": 0.183,
+          "repetition_2gram": 0.692,
+          "char_entropy": 1.29,
+          "longest_run": 45
+        }
+      },
+      "In the forest": {
+        "text": "In the forest the the theas th f fe fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "metrics": {
+          "unique_bigrams": 0.094,
+          "unique_trigrams": 0.123,
+          "repetition_2gram": 0.83,
+          "char_entropy": 1.06,
+          "longest_run": 177
+        }
+      },
+      "Today I learned": {
+        "text": "Today I learned lirerrrerrrarrrrrrrrrrrrrrrrrrrrrrrrrrorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrarrrarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr rrrrrrrrrrrrrrrrrrrr",
+        "metrics": {
+          "unique_bigrams": 0.117,
+          "unique_trigrams": 0.146,
+          "repetition_2gram": 0.85,
+          "char_entropy": 0.86,
+          "longest_run": 103
+        }
+      },
+      "The dog ran": {
+        "text": "The dog randooo oroooo a o r ooooo oo ooooooooooooooooo ooo ooooo oo oooooooooooooooooooo ooo ooooo oooooooooooo oooooooooo oooooooooooooooooooooooooooooooooooooooooooooooooooooooooo ooooooooooo oooooooooooooooo",
+        "metrics": {
+          "unique_bigrams": 0.09,
+          "unique_trigrams": 0.124,
+          "repetition_2gram": 0.762,
+          "char_entropy": 0.92,
+          "longest_run": 58
+        }
+      }
+    },
+    "awf": {
+      "Once upon a time": {
+        "text": "Once upon a time thin ar. t as ar fl he ad to and w t to ang int tha s wid thir ite torarilair thind fid win s the m l mis thee thithed waned amimo s. The am to fpr s a lry fond ane to t sithend thap shes t she therd",
+        "metrics": {
+          "unique_bigrams": 0.391,
+          "unique_trigrams": 0.692,
+          "repetition_2gram": 0.005,
+          "char_entropy": 3.76,
+          "longest_run": 2
+        }
+      },
+      "The little girl": {
+        "text": "The little girl than are thas ar fuse had to and w a to anged t him s wid thit ite thas ilair thind fid win s aytomo amis the f hithed wane an too s. The as to fpr s a lime him ane to t sithend thap shes t she therd",
+        "metrics": {
+          "unique_bigrams": 0.374,
+          "unique_trigrams": 0.667,
+          "repetition_2gram": 0.009,
+          "char_entropy": 3.71,
+          "longest_run": 2
+        }
+      },
+      "A boy named Tom": {
+        "text": "A boy named Tom the tare thas ar fk bk ad te and w a to ang int him s wid thit ite thas ilair thind fid win s the lolamis the f mithom therd amimom aim s she wappr s a lrye he fothitted sithend thap shes ig tuthe pr",
+        "metrics": {
+          "unique_bigrams": 0.416,
+          "unique_trigrams": 0.746,
+          "repetition_2gram": 0.009,
+          "char_entropy": 3.84,
+          "longest_run": 2
+        }
+      },
+      "In the forest": {
+        "text": "In the forest thin ar. thas ar fl he ad to and w a to ang int tha s wid thir ite torarilair thind fid win s the m l mis thee thithed waned amimo s. The am to fpr s a lry fond ane to t sithend thap shes t she therd",
+        "metrics": {
+          "unique_bigrams": 0.373,
+          "unique_trigrams": 0.678,
+          "repetition_2gram": 0.005,
+          "char_entropy": 3.72,
+          "longest_run": 2
+        }
+      },
+      "Today I learned": {
+        "text": "Today I learned thin are thas ar fus th iree and w a to ang int him s wid thir ite thas ilair thind fid win s aythin amis the f hithed wane an too s. The am to fpr s a lry fond ane to t sithend thap shes t she therd",
+        "metrics": {
+          "unique_bigrams": 0.388,
+          "unique_trigrams": 0.69,
+          "repetition_2gram": 0.009,
+          "char_entropy": 3.75,
+          "longest_run": 2
+        }
+      },
+      "The dog ran": {
+        "text": "The dog ran thin are thas ar fus th ire s thilto to ang int him s wid thir ite thas ilair thind fid win s ayte h amis the f hithed wane an too s. The am to fof s a lime him ane to t sithend thap shes t she therd",
+        "metrics": {
+          "unique_bigrams": 0.362,
+          "unique_trigrams": 0.665,
+          "repetition_2gram": 0.005,
+          "char_entropy": 3.67,
+          "longest_run": 2
+        }
+      }
+    }
+  }
+}

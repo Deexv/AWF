@@ -22,17 +22,22 @@ wheels/
 .installed.cfg
 *.egg
 
-# PyTorch (keep our checkpoints in /checkpoints, exclude stray .pt files elsewhere)
+# PyTorch checkpoints
+# Keep small checkpoints, exclude large ones (users can retrain)
 *.pth
 *.pt
 !checkpoints/*.pt
 !checkpoints/*.pth
+# Exclude the large 10M dense checkpoint (57MB — too big for git, users can retrain with train_10m.py)
+checkpoints/dense_10m.pt
 
 # Datasets (keep small corpus, exclude large ones)
 data/*.tar.gz
 data/*.zip
 data/MNIST/
 data/cifar-*
+# Exclude the 25MB TinyStories file (users can download with build_corpus_v2.py or train_10m.py)
+data/tinystories_train.txt
 
 # IDE
 .vscode/

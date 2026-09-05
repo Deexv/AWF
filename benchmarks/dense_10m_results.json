@@ -1,0 +1,26 @@
+{
+  "model_type": "Dense",
+  "params": 4903168,
+  "val_loss": 2.018613374233246,
+  "val_acc": 0.338447265625,
+  "val_ppl": 7.527879341807821,
+  "epochs_completed": 2,
+  "global_step": 2044,
+  "config": {
+    "d_model": 256,
+    "n_layers": 6,
+    "n_heads": 8,
+    "residual_rank": 16,
+    "sparse_k": 256,
+    "block_size": 128,
+    "lr": 0.001,
+    "batch": 16,
+    "train_chars": 3000000
+  },
+  "samples": {
+    "Once upon a time": "Once upon a time tit te t t at t t t ck titepute utt tuet te utt t t t tt t tut ite t taritate u",
+    "The little girl": "The little girlelitelelele le elllleeellleeeeeellleleeee leelelllllel lllllllllllellllllllalell",
+    "A boy named": "A boy named bey bey by ay bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "In the forest": "In the forest the the theas th f fe fffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+  }
+}
