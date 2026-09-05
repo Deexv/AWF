@@ -1,0 +1,13 @@
+{
+  "init_loss": 5.537685902913411,
+  "std_delta": 2.278000990549723,
+  "std_thru": 22.6,
+  "oc_gii_steps": 296,
+  "oc_gii_val_loss": 3.854658055305481,
+  "oc_gii_delta": 1.6830278476079306,
+  "block_skip_pct": 0.0,
+  "batch_skip_rate": 0.9222972972972973,
+  "ratio": 0.7388178734732619,
+  "thru": 59.2,
+  "combined": 1.9353105358237657
+}
