@@ -75,8 +75,9 @@ def compress_layer_by_layer(model, keep_ratio, device):
         r = max(1, int(keep_ratio * min(out_f, in_f)))
         r = min(r, min(out_f, in_f) - 1)
 
-        # SVD on the weight (keep on CPU to save VRAM)
-        W_cpu = W.cpu()
+        # SVD needs fp32 (doesn't work on fp16). Cast to fp32, do SVD, cast back.
+        original_dtype = W.dtype
+        W_cpu = W.detach().cpu().float()  # ALWAYS fp32 for SVD
         U_full, S, Vh_full = torch.linalg.svd(W_cpu, full_matrices=False)
         U = (U_full[:, :r] * S[:r].unsqueeze(0))  # (out, r)
         V = Vh_full[:r, :]  # (r, in)
@@ -122,7 +123,7 @@ def compress_layer_by_layer(model, keep_ratio, device):
         W_recon = U_recon @ V_recon
 
         with torch.no_grad():
-            module.weight.data.copy_(W_recon.to(device))
+            module.weight.data.copy_(W_recon.to(original_dtype).to(device))
         del U_recon, V_recon, W_recon
 
         total_orig += out_f * in_f * 4
