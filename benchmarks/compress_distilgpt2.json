@@ -1,0 +1,18 @@
+{
+  "model": "distilgpt2",
+  "original": {
+    "params": 81912576,
+    "size_mb": 312.4716796875,
+    "ppl": 25.428354688151988
+  },
+  "compressed": {
+    "svd_ratio": 0.49974768303601036,
+    "svd_size_mb": 156.15699793819851,
+    "svd_ppl": 135.2834217131761,
+    "int8_size_mb": 39.03924948454963,
+    "int8_ppl": 165.02834524913268,
+    "combined_compression": 8.004039109695626,
+    "fits_in_ram": true,
+    "is_fluent": false
+  }
+}
