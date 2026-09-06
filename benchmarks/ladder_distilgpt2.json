@@ -1,0 +1,70 @@
+{
+  "model": "distilgpt2",
+  "device": "cpu",
+  "results": [
+    {
+      "rung": "baseline",
+      "keep_ratio": 1.0,
+      "n_params": 81912576,
+      "model_size_mb": 312.5,
+      "file_size_mb": 312.5,
+      "compression_ratio": 1.0,
+      "load_time_sec": 15.2,
+      "perplexity": 41.14,
+      "loss": 3.717,
+      "tokens_per_sec": 32.5,
+      "humaneval_pass_rate": 0.0,
+      "peak_ram_mb": 811.4,
+      "peak_vram_mb": 0,
+      "sample": "Write a Python function that adds two numbers: The first number is the last one.\nHow to calculate more complex code? I will try and explain why this approach works in detail later! Let's take an examp"
+    },
+    {
+      "rung": "2x",
+      "keep_ratio": 0.5,
+      "n_params": 81912576,
+      "model_size_mb": 312.5,
+      "file_size_mb": 66.5,
+      "compression_ratio": 0.1477,
+      "load_time_sec": 17.4,
+      "perplexity": 25648.04,
+      "loss": 10.1522,
+      "tokens_per_sec": 38.9,
+      "humaneval_pass_rate": 0.0,
+      "peak_ram_mb": 1267.6,
+      "peak_vram_mb": 0,
+      "sample": "Write a Python function that adds two numbers:, and , for at. in to or this, ( the, is as on up .\u2026,,,,,,, one, &,,,- and,, when, for, and,,\n \u2014,, of about, and,, and,,, his, and \",,,,,,, and, and and,,"
+    },
+    {
+      "rung": "4x",
+      "keep_ratio": 0.25,
+      "n_params": 81912576,
+      "model_size_mb": 312.5,
+      "file_size_mb": 33.5,
+      "compression_ratio": 0.0739,
+      "load_time_sec": 15.3,
+      "perplexity": 218603.43,
+      "loss": 12.295,
+      "tokens_per_sec": 41.2,
+      "humaneval_pass_rate": 0.0,
+      "peak_ram_mb": 1267.6,
+      "peak_vram_mb": 0,
+      "sample": "Write a Python function that adds two numbers: with in and, ( and , for\u2026 the \u2026 one up ' \" at or as\n over \u2014.... .. but\u2014... - to about once where on ... now \u2013,,..\u00a0 within by '' [ so\u2026. till : even etc du"
+    },
+    {
+      "rung": "8x",
+      "keep_ratio": 0.125,
+      "n_params": 81912576,
+      "model_size_mb": 312.5,
+      "file_size_mb": 16.9,
+      "compression_ratio": 0.0369,
+      "load_time_sec": 13.5,
+      "perplexity": 500521.93,
+      "loss": 13.1234,
+      "tokens_per_sec": 42.2,
+      "humaneval_pass_rate": 0.0,
+      "peak_ram_mb": 1267.6,
+      "peak_vram_mb": 0,
+      "sample": "Write a Python function that adds two numbers: ', \" '' \"\" ,\u2026 \u2026,, \u2014 about ( . [[ and\u2014 or ... [\u2026] for \ufffd \"' _\u2014\" where (( {... \ufffd \u00ab af \"[\ufffd : once -\n but (),.... [anooga (\" at \u2013,- up # \"_}; \"( ()) largeDown"
+    }
+  ]
+}
