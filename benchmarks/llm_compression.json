@@ -1,0 +1,191 @@
+{
+  "model": "distilgpt2",
+  "original_params": 81912576,
+  "compression_ratio": 0.14956463666357186,
+  "compression_factor": 6.686072472127104,
+  "original_storage_mb": 312.4716796875,
+  "compressed_storage_mb": 23.367356620058473,
+  "sample_text": "Once upon a time there was a little girl named Lily, who had developed a short, pink hair, and was quite popular in the United States. In fact, her name was originally used in other languages.\n\nIn her autobiography, her love for animals, and the desire to make them, Lily, was based on her childhood love of animals. She also had a love for a living.\nShe had an interest in animals, and was interested",
+  "layer_stats": [
+    {
+      "layer": "transformer.h.0.attn.c_attn",
+      "type": "conv1d",
+      "shape": "2304x768",
+      "rank": 172,
+      "error": "0.5858",
+      "original_mb": 6.75,
+      "compressed_mb": 1.008
+    },
+    {
+      "layer": "transformer.h.0.attn.c_proj",
+      "type": "conv1d",
+      "shape": "768x768",
+      "rank": 115,
+      "error": "0.4547",
+      "original_mb": 2.25,
+      "compressed_mb": 0.337
+    },
+    {
+      "layer": "transformer.h.0.mlp.c_fc",
+      "type": "conv1d",
+      "shape": "3072x768",
+      "rank": 184,
+      "error": "0.6783",
+      "original_mb": 9.0,
+      "compressed_mb": 1.348
+    },
+    {
+      "layer": "transformer.h.0.mlp.c_proj",
+      "type": "conv1d",
+      "shape": "768x3072",
+      "rank": 184,
+      "error": "0.6709",
+      "original_mb": 9.0,
+      "compressed_mb": 1.348
+    },
+    {
+      "layer": "transformer.h.1.attn.c_attn",
+      "type": "conv1d",
+      "shape": "2304x768",
+      "rank": 172,
+      "error": "0.6274",
+      "original_mb": 6.75,
+      "compressed_mb": 1.008
+    },
+    {
+      "layer": "transformer.h.1.attn.c_proj",
+      "type": "conv1d",
+      "shape": "768x768",
+      "rank": 115,
+      "error": "0.6453",
+      "original_mb": 2.25,
+      "compressed_mb": 0.337
+    },
+    {
+      "layer": "transformer.h.1.mlp.c_fc",
+      "type": "conv1d",
+      "shape": "3072x768",
+      "rank": 184,
+      "error": "0.6626",
+      "original_mb": 9.0,
+      "compressed_mb": 1.348
+    },
+    {
+      "layer": "transformer.h.1.mlp.c_proj",
+      "type": "conv1d",
+      "shape": "768x3072",
+      "rank": 184,
+      "error": "0.6643",
+      "original_mb": 9.0,
+      "compressed_mb": 1.348
+    },
+    {
+      "layer": "transformer.h.2.attn.c_attn",
+      "type": "conv1d",
+      "shape": "2304x768",
+      "rank": 172,
+      "error": "0.6335",
+      "original_mb": 6.75,
+      "compressed_mb": 1.008
+    },
+    {
+      "layer": "transformer.h.2.attn.c_proj",
+      "type": "conv1d",
+      "shape": "768x768",
+      "rank": 115,
+      "error": "0.6395",
+      "original_mb": 2.25,
+      "compressed_mb": 0.337
+    },
+    {
+      "layer": "transformer.h.2.mlp.c_fc",
+      "type": "conv1d",
+      "shape": "3072x768",
+      "rank": 184,
+      "error": "0.6524",
+      "original_mb": 9.0,
+      "compressed_mb": 1.348
+    },
+    {
+      "layer": "transformer.h.2.mlp.c_proj",
+      "type": "conv1d",
+      "shape": "768x3072",
+      "rank": 184,
+      "error": "0.6512",
+      "original_mb": 9.0,
+      "compressed_mb": 1.348
+    },
+    {
+      "layer": "transformer.h.3.attn.c_attn",
+      "type": "conv1d",
+      "shape": "2304x768",
+      "rank": 172,
+      "error": "0.6422",
+      "original_mb": 6.75,
+      "compressed_mb": 1.008
+    },
+    {
+      "layer": "transformer.h.3.attn.c_proj",
+      "type": "conv1d",
+      "shape": "768x768",
+      "rank": 115,
+      "error": "0.6560",
+      "original_mb": 2.25,
+      "compressed_mb": 0.337
+    },
+    {
+      "layer": "transformer.h.3.mlp.c_fc",
+      "type": "conv1d",
+      "shape": "3072x768",
+      "rank": 184,
+      "error": "0.6553",
+      "original_mb": 9.0,
+      "compressed_mb": 1.348
+    },
+    {
+      "layer": "transformer.h.3.mlp.c_proj",
+      "type": "conv1d",
+      "shape": "768x3072",
+      "rank": 184,
+      "error": "0.6737",
+      "original_mb": 9.0,
+      "compressed_mb": 1.348
+    },
+    {
+      "layer": "transformer.h.4.attn.c_attn",
+      "type": "conv1d",
+      "shape": "2304x768",
+      "rank": 172,
+      "error": "0.7090",
+      "original_mb": 6.75,
+      "compressed_mb": 1.008
+    },
+    {
+      "layer": "transformer.h.4.attn.c_proj",
+      "type": "conv1d",
+      "shape": "768x768",
+      "rank": 115,
+      "error": "0.7176",
+      "original_mb": 2.25,
+      "compressed_mb": 0.337
+    },
+    {
+      "layer": "transformer.h.4.mlp.c_fc",
+      "type": "conv1d",
+      "shape": "3072x768",
+      "rank": 184,
+      "error": "0.6557",
+      "original_mb": 9.0,
+      "compressed_mb": 1.348
+    },
+    {
+      "layer": "transformer.h.4.mlp.c_proj",
+      "type": "conv1d",
+      "shape": "768x3072",
+      "rank": 184,
+      "error": "0.6778",
+      "original_mb": 9.0,
+      "compressed_mb": 1.348
+    }
+  ]
+}

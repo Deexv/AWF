@@ -1,0 +1,29 @@
+{
+  "model": "distilgpt2",
+  "original": {
+    "params": 81912576,
+    "storage_mb": 312.4716796875,
+    "perplexity": 25.428354688151988,
+    "loss": 3.2358648777008057,
+    "samples": {
+      "Once upon a time there was a little girl named Lily": "Once upon a time there was a little girl named Lily who was in her room, and she was there.\n\"You just heard the cries of a girl who was looking at it from across the room.\"\n\"I hear the cries of a girl who was in her room.\"\n\"I heard the cries of a girl who was in her room.\"\n\"She was crying but didn't know what was going on. She didn't know what",
+      "The scientist walked into the lab and": "The scientist walked into the lab and found out that the man was actually a woman.\n\n\n\n\nI had to have a job in the doctorial department for the previous two years.\nBut I have to have a job in the doctorial department for the previous two years.\nAnd I have to have a job in the doctorial department for the previous two years.\nIf you read this, you know that women",
+      "In a small village by the sea,": "In a small village by the sea, a pair of small men, half of a woman and a young boy, had a conversation about the place. When they were about to arrive, they asked the man to take a seat in their seat, one of whom was standing next to them, and he said, \"We need to meet you, I am a young man.\"\n\n\n\nThe man said to the man, \"I"
+    }
+  },
+  "compressed": {
+    "params": 12251224,
+    "storage_mb": 23.367356620058473,
+    "perplexity": 295789726.9884229,
+    "loss": 19.505159378051758,
+    "compression_ratio": 0.14956463666357186,
+    "compression_factor": 6.686072472127104,
+    "avg_reconstruction_error": 0.6463732223712868,
+    "samples": {
+      "Once upon a time there was a little girl named Lily": "Once upon a time there was a little girl named Lily,,,,,,,,,,,,,,,,,,,,,,,,,,, and,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, and,,,,,,,,,,,,,,,,,,,,,",
+      "The scientist walked into the lab and": "The scientist walked into the lab and,,,, and,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
+      "In a small village by the sea,": "In a small village by the sea, that and,,, and and, and,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, and,,,,,,,,,,, (,,,,,,,,,,,,,"
+    }
+  },
+  "perplexity_ratio": 11632279.4225551
+}
