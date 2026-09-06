@@ -1,0 +1,30 @@
+[
+  {
+    "model": "distilgpt2",
+    "display": "DistilGPT2",
+    "params": "82M",
+    "n_params": 81912576,
+    "original_mb": 312.5,
+    "compressed_mb": 11.7,
+    "compression": 26.7,
+    "orig_ppl": 29.3,
+    "comp_ppl": 36.0,
+    "fluent": true,
+    "ram_gb": 0.5,
+    "sample": "Once upon a time the protagonist would be able to control the game.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+  },
+  {
+    "model": "gpt2",
+    "display": "GPT-2 Small",
+    "params": "124M",
+    "n_params": 124439808,
+    "original_mb": 474.7,
+    "compressed_mb": 17.8,
+    "compression": 26.7,
+    "orig_ppl": 12.8,
+    "comp_ppl": 17.2,
+    "fluent": true,
+    "ram_gb": 0.5,
+    "sample": "Once upon a time a series of events will occur that will lead to the discovery of the ancient race. The game will be pla"
+  }
+]
