@@ -1,0 +1,20 @@
+{
+  "model_path": "/home/z/my-project/compressed/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf",
+  "model_size_mib": 379.3793640136719,
+  "n_conversations": 10000,
+  "n_ok": 10000,
+  "n_fail": 0,
+  "ok_rate": 1.0,
+  "total_prompt_tokens": 357099,
+  "total_response_tokens": 222615,
+  "sum_of_per_call_wall_s": 10985.15887878199,
+  "mean_throughput_tokens_per_s": 20.087309323265245,
+  "median_throughput_tokens_per_s": 20.364555608621995,
+  "p95_throughput_tokens_per_s": 22.039974307328052,
+  "mean_latency_s": 1.098515887878199,
+  "median_latency_s": 1.1552138649994959,
+  "p95_latency_s": 1.2583431310004016,
+  "mean_response_tokens": 22.2615,
+  "median_response_tokens": 24.0,
+  "errors": {}
+}

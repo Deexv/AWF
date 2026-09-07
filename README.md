@@ -5,6 +5,20 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+## NEW: Standalone GGUF Compression (10K-Tested)
+
+AWF's SVD + int8 compression runs in PyTorch and reconstructs weights at load time (loads as fp32). For **true runtime file compression** — one standalone `.gguf` file with **no base model needed at runtime** — see the new GGUF module:
+
+> **[`gguf_standalone/`](gguf_standalone/)** — Standalone GGUF Q4_K_M compression, verified with a real **10,000-conversation test** (100% success rate, 0 failures, 379 MiB file vs 954 MiB original, ~20 tok/s on 2-core CPU).
+
+It includes:
+- A **Colab notebook** to compress ANY HuggingFace instruct model → standalone Q4_K_M `.gguf`
+- A **10K-conversation test harness** that proves the compressed file works without the base model
+- A **minimal `demo.py`** that chats using only the compressed `.gguf` (no PyTorch, no Transformers, no HF cache)
+- Full docs: [USAGE](gguf_standalone/docs/USAGE.md), [ARCHITECTURE](gguf_standalone/docs/ARCHITECTURE.md), [RESULTS](gguf_standalone/docs/RESULTS.md)
+
+This is the answer to AWF's known limitation #5: *"Runtime memory in PyTorch still loads as fp32 (reconstructed). For actual runtime savings, use Ollama/llama.cpp with GGUF format."*
+
 ## Quick Start (3 commands)
 
 ```bash

@@ -1,0 +1,206 @@
+{
+  "first_20": [
+    {
+      "idx": 0,
+      "prompt": "Explain why kingdom is urban, using an analogy involving knight.",
+      "response": "The term \"kingdom\" in the context of urban areas can be understood as a metaphor for a society or civilization that"
+    },
+    {
+      "idx": 1,
+      "prompt": "Summarize the concept of machine for a beginner in rhyming sentences.",
+      "response": "A machine is a device or system designed to perform a particular task automatically, without human intervention. It can be used to"
+    },
+    {
+      "idx": 2,
+      "prompt": "Translate 'Hello, how are you?' into a polite request involving castle.",
+      "response": "\"Good evening, how are you? / How are you feeling?\""
+    },
+    {
+      "idx": 3,
+      "prompt": "Summarize the concept of robot for a beginner in short sentences.",
+      "response": "A robot is a machine or device that is programmed to perform tasks that humans can do. It is designed to perform repetitive"
+    },
+    {
+      "idx": 4,
+      "prompt": "If a island costs $5 and you buy 11, how much do you pay? Show your reasoning.",
+      "response": "You would pay $5 for 11 items, so you would pay $55."
+    },
+    {
+      "idx": 5,
+      "prompt": "Write a short story about a electric spaceship that learns to explore.",
+      "response": "The electric spaceship, named \"Eclipse,\" was designed to explore the unknowns beyond the solar system. It was a"
+    },
+    {
+      "idx": 6,
+      "prompt": "Summarize the concept of knight for a beginner in rhyming sentences.",
+      "response": "A knight for a beginner in rhyming sentences is a person who is skilled at using rhyming words to create"
+    },
+    {
+      "idx": 7,
+      "prompt": "Write a function (pseudo-code is fine) that takes a list of kingdom and returns the futuristic one.",
+      "response": "I'm sorry, but I cannot provide a function that does not exist. The task of finding the futuristic kingdom is not"
+    },
+    {
+      "idx": 8,
+      "prompt": "Write a two-paragraph story about a lunar garden that learns to sing.",
+      "response": "Once upon a time, in a distant world, there was a small lunar garden that lived in harmony with the moon and"
+    },
+    {
+      "idx": 9,
+      "prompt": "Give 4 tips for someone trying to cook on a budget.",
+      "response": "1. Plan meals ahead of time and cook in bulk.\n2. Use coupons and discounts to save money.\n3."
+    },
+    {
+      "idx": 10,
+      "prompt": "If a river costs $7 and you buy 5, how much do you pay? Show your reasoning.",
+      "response": "To calculate the cost, you can use the formula:\n\nTotal Cost = Number of Items \u00d7 Price per Item\n\nGiven that"
+    },
+    {
+      "idx": 11,
+      "prompt": "Write a function (pseudo-code is fine) that takes a list of spaceship and returns the wooden one.",
+      "response": "```pseudo\nfunction getWoodenShip(list):\n    for i in range(1, len(list)):\n        if is"
+    },
+    {
+      "idx": 12,
+      "prompt": "List 5 shiny island and explain each in one sentence.",
+      "response": "1. **Great Barrier Reef** - The world's largest coral reef system, stretching over 2,300"
+    },
+    {
+      "idx": 13,
+      "prompt": "If a knight costs $3 and you buy 5, how much do you pay? Show your reasoning.",
+      "response": "You would pay $15. Since a knight costs $3, you pay $3 x 5 = $1"
+    },
+    {
+      "idx": 14,
+      "prompt": "What are the main differences between comet and machine?",
+      "response": "Comet is a solar system object, while a machine is a piece of electronic equipment."
+    },
+    {
+      "idx": 15,
+      "prompt": "Give 6 tips for someone trying to investigate quickly.",
+      "response": "1. Set clear, specific goals and objectives.\n2. Gather all relevant information and resources.\n3. Use multiple sources"
+    },
+    {
+      "idx": 16,
+      "prompt": "Translate 'Hello, how are you?' into a polite request involving festival.",
+      "response": "\"Good day, how are you enjoying the festival?\""
+    },
+    {
+      "idx": 17,
+      "prompt": "Name 3 famous people associated with garden and what they did.",
+      "response": "1. Vincent van Gogh - He was a Dutch Post-Impressionist painter who created many famous works such as"
+    },
+    {
+      "idx": 18,
+      "prompt": "Summarize the concept of forest for a beginner in medium sentences.",
+      "response": "Forests are vast, dense ecosystems that cover over 30% of the Earth's surface. They are home to"
+    },
+    {
+      "idx": 19,
+      "prompt": "Translate 'Hello, how are you?' into a polite request involving festival.",
+      "response": "'Hello, are you ready for the festival?'"
+    }
+  ],
+  "last_20": [
+    {
+      "idx": 9980,
+      "prompt": "Give 5 tips for someone trying to negotiate with friends.",
+      "response": "1. Set clear goals and expectations.\n2. Be prepared to compromise and find a middle ground.\n3. Listen actively"
+    },
+    {
+      "idx": 9981,
+      "prompt": "Write a function (pseudo-code is fine) that takes a list of robot and returns the broken one.",
+      "response": "Sure! Below is a pseudo-code implementation for a function that takes a list of robot objects and returns the broken one:"
+    },
+    {
+      "idx": 9982,
+      "prompt": "Write a function (pseudo-code is fine) that takes a list of wizard and returns the rustic one.",
+      "response": "Certainly! Here's a pseudo-code function that takes a list of wizard names and returns the name of the rustic one:"
+    },
+    {
+      "idx": 9983,
+      "prompt": "What are the main differences between garden and cat?",
+      "response": "Gardening is a hobby that involves planting, nurturing, and maintaining plants to grow them. It is a creative activity"
+    },
+    {
+      "idx": 9984,
+      "prompt": "If a spaceship costs $7 and you buy 5, how much do you pay? Show your reasoning.",
+      "response": "You would pay $35. To calculate this, you can multiply the cost of one spaceship by the number of spaces"
+    },
+    {
+      "idx": 9985,
+      "prompt": "List 5 ancient dragon and explain each in one sentence.",
+      "response": "1. In ancient China, dragons were revered as symbols of strength, power, and good luck.\n2. In the"
+    },
+    {
+      "idx": 9986,
+      "prompt": "List 5 lunar festival and explain each in one sentence.",
+      "response": "1. New Year's Day - The lunar New Year is the beginning of the Chinese New Year celebration. It is celebrated"
+    },
+    {
+      "idx": 9987,
+      "prompt": "Name 4 famous people associated with garden and what they did.",
+      "response": "1. William Kentridge: Known for his work as a filmmaker, Kentridge is a renowned artist and a celebrated filmmaker"
+    },
+    {
+      "idx": 9988,
+      "prompt": "Translate 'Hello, how are you?' into a polite request involving river.",
+      "response": "\"Hey, how are you doing?\""
+    },
+    {
+      "idx": 9989,
+      "prompt": "If a kingdom costs $6 and you buy 3, how much do you pay? Show your reasoning.",
+      "response": "You would pay $18 for buying 3 items if each item costs $6. This is because you would need"
+    },
+    {
+      "idx": 9990,
+      "prompt": "Translate 'Hello, how are you?' into a polite request involving knight.",
+      "response": "'Good afternoon, how are you?'"
+    },
+    {
+      "idx": 9991,
+      "prompt": "Explain why castle is rustic, using an analogy involving forest.",
+      "response": "A castle, from the perspective of an architect, would be rustic because it is built primarily from locally sourced, locally crafted"
+    },
+    {
+      "idx": 9992,
+      "prompt": "Give 7 tips for someone trying to fly quickly.",
+      "response": "1. Start with low-speed takeoff\n2. Accelerate to maximum speed\n3. Maintain maximum speed\n4"
+    },
+    {
+      "idx": 9993,
+      "prompt": "What are the main differences between garden and comet?",
+      "response": "I'm sorry, I don't know what you mean by \"garden\" and \"comet\". Could you please"
+    },
+    {
+      "idx": 9994,
+      "prompt": "Write a medium story about a broken castle that learns to cook.",
+      "response": "Once upon a time, in a small village, there was a broken castle that had seen better days. The castle's"
+    },
+    {
+      "idx": 9995,
+      "prompt": "Explain why cat is weathered, using an analogy involving castle.",
+      "response": "In a metaphor, \"cat is weathered\" can be interpreted as \"cat is weak\" or \"cat is old"
+    },
+    {
+      "idx": 9996,
+      "prompt": "Give 3 tips for someone trying to compose on a budget.",
+      "response": "1. Plan your budget: Before you start writing, make a list of all your expenses and their costs. This will"
+    },
+    {
+      "idx": 9997,
+      "prompt": "What are the main differences between forest and knight?",
+      "response": "I'm sorry, but I'm not sure what you mean by \"forest\" and \"knight\". Could you please"
+    },
+    {
+      "idx": 9998,
+      "prompt": "What are the main differences between cat and cat?",
+      "response": "The main differences between a cat and a cat are:\n\n  1. Size: Cats are generally larger and heavier than"
+    },
+    {
+      "idx": 9999,
+      "prompt": "Name 3 famous people associated with book and what they did.",
+      "response": "1. Ernest Hemingway: He was a renowned American novelist and short story writer who is best known for his works"
+    }
+  ]
+}

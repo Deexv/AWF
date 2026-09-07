@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+
+# Compressed model files — too large for git, users generate their own
+compressed/*.gguf
+!compressed/PLACEHOLDER.txt
+!compressed/README.md
