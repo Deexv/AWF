@@ -58,6 +58,9 @@ defaults baked into the GGUF metadata if you omit them.
 ```bash
 ollama create my-compressed-model -f Modelfile
 ```
+```bash
+ollama create qwen2-1-5b-instruct -f Modelfile.Qwen2-1.5B-Instruct
+```ollama create qwen2-1-5b-instruct -f Modelfile.Qwen2-1.5B-Instruct
 
 This registers the model in Ollama's local registry. It does NOT copy the `.gguf`
 file — Ollama references it in place. If you move or delete the `.gguf`, you'll
