@@ -15,7 +15,12 @@ It includes:
 - A **Colab notebook** to compress ANY HuggingFace instruct model → standalone Q4_K_M `.gguf`
 - A **10K-conversation test harness** that proves the compressed file works without the base model
 - A **minimal `demo.py`** that chats using only the compressed `.gguf` (no PyTorch, no Transformers, no HF cache)
-- Full docs: [USAGE](gguf_standalone/docs/USAGE.md), [ARCHITECTURE](gguf_standalone/docs/ARCHITECTURE.md), [RESULTS](gguf_standalone/docs/RESULTS.md)
+- A **compression-level comparison** ([Q8_0 vs Q5_K_M vs Q4_K_M vs Q2_K](gguf_standalone/docs/COMPRESSION_LEVELS.md)) with perplexity numbers and verbatim sample responses
+- Full docs: [USAGE](gguf_standalone/docs/USAGE.md), [ARCHITECTURE](gguf_standalone/docs/ARCHITECTURE.md), [RESULTS](gguf_standalone/docs/RESULTS.md), [COMPRESSION_LEVELS](gguf_standalone/docs/COMPRESSION_LEVELS.md), [OLLAMA](gguf_standalone/docs/OLLAMA.md)
+
+**Works with Ollama** — any `.gguf` produced here loads directly via `ollama create`. See [gguf_standalone/docs/OLLAMA.md](gguf_standalone/docs/OLLAMA.md).
+
+The companion (`companion/`) now supports `.gguf` files directly via `--gguf`, or via Ollama with `--ollama`. See [companion/README.md](companion/README.md).
 
 This is the answer to AWF's known limitation #5: *"Runtime memory in PyTorch still loads as fp32 (reconstructed). For actual runtime savings, use Ollama/llama.cpp with GGUF format."*
 

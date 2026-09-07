@@ -20,12 +20,19 @@ If you've been told "compression doesn't actually save you anything because you 
 │   ├── run_10k_test.py                  # The 10K-conversation test harness
 │   ├── run_chunks.py                    # Chunked runner (resumable, for long tests)
 │   ├── run_chunk.py                     # Single-chunk runner
-│   └── finalize_results.py              # Aggregate chunked results into final summary
+│   ├── finalize_results.py              # Aggregate chunked results into final summary
+│   ├── compare_quant_levels.py          # Multi-level comparison (Q8_0/Q5_K_M/Q4_K_M/Q2_K)
+│   └── patch_comparison_with_official_ppl.py  # Adds official llama-perplexity numbers
+├── comparison/                          # Multi-level comparison artifacts
+│   ├── quant_level_comparison.json       # Full results: size, PPL, latency, samples
+│   └── perplexity_corpus.txt            # Eval corpus
 ├── demo.py                              # Minimal: chat with the compressed model
 ├── docs/
 │   ├── USAGE.md                         # How to compress your own model
 │   ├── ARCHITECTURE.md                  # Why this works (and why "compression still needs base model" is wrong)
-│   └── RESULTS.md                       # Filled in after the 10K test runs
+│   ├── RESULTS.md                       # Full 10K test results
+│   ├── COMPRESSION_LEVELS.md            # Q8_0/Q5_K_M/Q4_K_M/Q2_K comparison with perplexity proof
+│   └── OLLAMA.md                        # How to use .gguf files with Ollama
 ├── results/                             # 10K test results (CSV + JSON)
 └── README.md                            # This file
 ```
@@ -147,8 +154,10 @@ See [`docs/RESULTS.md`](docs/RESULTS.md) for the full numbers and `results/final
 
 - [`docs/USAGE.md`](docs/USAGE.md) — How to compress your own model (local + Colab)
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — Why this works, and a clear explanation of when compression does / doesn't need a base model
-- [`docs/RESULTS.md`](docs/RESULTS.md) — Full 10K test results
-- [`notebooks/compress_model_to_gguf_q4_k_m.ipynb`](notebooks/compress_model_to_gguf_q4_k_m.ipynb) — One-click Colab notebook
+- [`docs/RESULTS.md`](docs/RESULTS.md) — Full 10K test results (100% success rate, ~20 tok/s)
+- [`docs/COMPRESSION_LEVELS.md`](docs/COMPRESSION_LEVELS.md) — **0.85 / 0.5 / 0.2 compression comparison** with perplexity numbers and verbatim sample responses (Q8_0 vs Q5_K_M vs Q4_K_M vs Q2_K)
+- [`docs/OLLAMA.md`](docs/OLLAMA.md) — How to use the compressed `.gguf` files with Ollama (yes, they work directly — no conversion needed)
+- [`notebooks/compress_model_to_gguf_q4_k_m.ipynb`](notebooks/compress_model_to_gguf_q4_k_m.ipynb) — One-click Colab notebook to compress any HF model
 
 ---
 

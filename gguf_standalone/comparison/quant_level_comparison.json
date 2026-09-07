@@ -1,0 +1,553 @@
+{
+  "models": [
+    {
+      "label": "Q8_0",
+      "model_path": "/home/z/my-project/comparison/Qwen-Q8_0.gguf",
+      "size_mib": 506.4662780761719,
+      "load_time_s": 0.528164249000838,
+      "perplexity": {
+        "pseudo_perplexity": 12.4899,
+        "avg_nll_per_token": 2.524920317700311,
+        "method": "llama-perplexity binary, wikitext-2 test set, 4 chunks \u00d7 2048 ctx",
+        "stderr": 0.5326
+      },
+      "perplexity_time_s": 48.14695532599944,
+      "n_generation_tests": 10,
+      "n_ok": 10,
+      "n_fail": 0,
+      "mean_latency_s": 2.1303546228002235,
+      "median_latency_s": 1.987233962998289,
+      "p95_latency_s": 4.414811647999159,
+      "mean_throughput_tokens_per_s": 26.821486497152343,
+      "median_throughput_tokens_per_s": 27.4817058936411,
+      "mean_response_tokens": 58.3,
+      "median_response_tokens": 56.0,
+      "generations": [
+        {
+          "idx": 0,
+          "prompt": "What is the capital of France?",
+          "response": "The capital of France is Paris.",
+          "wall_s": 0.32116027499796473,
+          "tokens_per_s": 21.79597087480499,
+          "n_response_tokens": 7,
+          "ok": true
+        },
+        {
+          "idx": 1,
+          "prompt": "If a shirt costs $25 and there's a 20% discount, what's the final price? Show your work.",
+          "response": "To calculate the final price after a 20% discount on a $25 shirt, follow these steps:\n\n1. Calculate the discount amount:\n   Discount = 20% of $25\n   Discount = 0.20 * $25\n   Discount = $5\n\n2. Subtract the discount from the original price:\n   Final Price = Original Price - Discount\n   Final Price = $25 - $5\n   Final Price = $20\n\nSo, the final price after a 20% discount on a $25 shirt is $20.",
+          "wall_s": 4.414811647999159,
+          "tokens_per_s": 27.634248010397396,
+          "n_response_tokens": 122,
+          "ok": true
+        },
+        {
+          "idx": 2,
+          "prompt": "Write a Python function that returns the nth Fibonacci number. Just the code.",
+          "response": "```python\ndef fibonacci(n):\n    \"\"\"\n    Calculate the nth Fibonacci number.\n    \n    Args:\n    n (int): The position in the Fibonacci sequence.\n    \n    Returns:\n    int: The nth Fibonacci number.\n    \"\"\"\n    if n <= 1:\n        return n\n    else:\n        return fibonacci(n-1) + fibonacci(n-2)\n\n# Test the function\nprint(fibonacci(10))  # Output: 55\n```",
+          "wall_s": 3.47614002300179,
+          "tokens_per_s": 27.329163776884798,
+          "n_response_tokens": 95,
+          "ok": true
+        },
+        {
+          "idx": 3,
+          "prompt": "Summarize the plot of Romeo and Juliet in two sentences.",
+          "response": "Romeo and Juliet are two young lovers who fall in love with each other but are rejected by their families and eventually die in a duel.",
+          "wall_s": 1.0936463630023354,
+          "tokens_per_s": 26.516798282387807,
+          "n_response_tokens": 29,
+          "ok": true
+        },
+        {
+          "idx": 4,
+          "prompt": "Write a four-line poem about the ocean.",
+          "response": "The ocean's vast and deep,  \nA sea of blue and green,  \nWhispers secrets to the shore,  \nA place where dreams are made.",
+          "wall_s": 1.1938533780012222,
+          "tokens_per_s": 25.966337718875447,
+          "n_response_tokens": 31,
+          "ok": true
+        },
+        {
+          "idx": 5,
+          "prompt": "If all roses are flowers and some flowers fade quickly, can we conclude that some roses fade quickly? Explain.",
+          "response": "Yes, we can conclude that some roses fade quickly based on the given information that all roses are flowers and some flowers fade quickly. This conclusion is logically consistent because roses are a type of flower, and all flowers are considered to be a type of plant. Therefore, if some flowers fade quickly, it logically follows that some roses, which are also flowers, will also fade quickly.",
+          "wall_s": 2.832108320999396,
+          "tokens_per_s": 26.835131776732705,
+          "n_response_tokens": 76,
+          "ok": true
+        },
+        {
+          "idx": 6,
+          "prompt": "Translate 'Good morning, how are you?' into French and Spanish.",
+          "response": "In French, the translation is \"Bonjour, comment \u00e7a va?\" and in Spanish, it is \"Buenos d\u00edas, \u00bfc\u00f3mo est\u00e1s?\"",
+          "wall_s": 1.1090453780016105,
+          "tokens_per_s": 27.95196717365967,
+          "n_response_tokens": 31,
+          "ok": true
+        },
+        {
+          "idx": 7,
+          "prompt": "List three benefits of regular exercise.",
+          "response": "1. Improved physical health: Regular exercise can help improve cardiovascular health, strengthen muscles and bones, and increase endurance.\n2. Reduced risk of chronic diseases: Exercise can help lower the risk of heart disease, diabetes, and some types of cancer.\n3. Increased energy levels: Regular exercise can help increase energy levels and improve mood.",
+          "wall_s": 2.3649272529983136,
+          "tokens_per_s": 27.90783518449608,
+          "n_response_tokens": 66,
+          "ok": true
+        },
+        {
+          "idx": 8,
+          "prompt": "Define photosynthesis in one sentence.",
+          "response": "Photosynthesis is the process by which plants, algae, and some bacteria convert light energy, usually from the sun, into chemical energy stored in glucose, which is then used as a source of energy and building blocks for the plant.",
+          "wall_s": 1.6095406729982642,
+          "tokens_per_s": 28.579582219758922,
+          "n_response_tokens": 46,
+          "ok": true
+        },
+        {
+          "idx": 9,
+          "prompt": "What's the difference between a virus and a bacterium?",
+          "response": "A virus is a small, non-cellular organism that can only replicate inside a host cell. It consists of a protein coat and genetic material. Bacteria are single-celled microorganisms that can be either prokaryotic or eukaryotic. They have a cell wall, cell membrane, and cytoplasm. Bacteria can be either prokaryotic or eukaryotic.",
+          "wall_s": 2.888312916002178,
+          "tokens_per_s": 27.697829953525602,
+          "n_response_tokens": 80,
+          "ok": true
+        }
+      ],
+      "official_perplexity": {
+        "ppl": 12.4899,
+        "stderr": 0.5326,
+        "n_chunks": 4,
+        "n_ctx": 2048
+      }
+    },
+    {
+      "label": "Q5_K_M",
+      "model_path": "/home/z/my-project/comparison/Qwen-Q5_K_M.gguf",
+      "size_mib": 400.6254577636719,
+      "load_time_s": 0.39136639299977105,
+      "perplexity": {
+        "pseudo_perplexity": 12.9868,
+        "avg_nll_per_token": 2.5639334569939716,
+        "method": "llama-perplexity binary, wikitext-2 test set, 4 chunks \u00d7 2048 ctx",
+        "stderr": 0.559
+      },
+      "perplexity_time_s": 54.56069251200097,
+      "n_generation_tests": 10,
+      "n_ok": 10,
+      "n_fail": 0,
+      "mean_latency_s": 3.4676818318006553,
+      "median_latency_s": 2.949384668501807,
+      "p95_latency_s": 6.782367435000197,
+      "mean_throughput_tokens_per_s": 16.073208132338795,
+      "median_throughput_tokens_per_s": 16.684196958559813,
+      "mean_response_tokens": 60,
+      "median_response_tokens": 47.5,
+      "generations": [
+        {
+          "idx": 0,
+          "prompt": "What is the capital of France?",
+          "response": "The capital of France is Paris.",
+          "wall_s": 0.759012086000439,
+          "tokens_per_s": 9.22251454108723,
+          "n_response_tokens": 7,
+          "ok": true
+        },
+        {
+          "idx": 1,
+          "prompt": "If a shirt costs $25 and there's a 20% discount, what's the final price? Show your work.",
+          "response": "To calculate the final price after a 20% discount on a $25 shirt, follow these steps:\n\n1. Calculate the discount amount:\n   Discount = 20% of $25\n   Discount = 0.20 * $25\n   Discount = $5\n\n2. Subtract the discount from the original price:\n   Final Price = Original Price - Discount\n   Final Price = $25 - $5\n   Final Price = $20\n\nSo, the final price after a 20% discount on a $25 shirt is $20.",
+          "wall_s": 6.712620461999904,
+          "tokens_per_s": 18.174720392824398,
+          "n_response_tokens": 122,
+          "ok": true
+        },
+        {
+          "idx": 2,
+          "prompt": "Write a Python function that returns the nth Fibonacci number. Just the code.",
+          "response": "Certainly! Here's a Python function that returns the nth Fibonacci number:\n\n```python\ndef fibonacci(n):\n    if n <= 0:\n        return \"Input should be a positive integer.\"\n    elif n == 1:\n        return 0\n    elif n == 2:\n        return 1\n    else:\n        a, b = 0, 1\n        for _ in range(2, n):\n            a, b = b, a + b\n        return b\n```\n\nThis function uses a simple iterative approach to calculate the nth Fibonacci number. It starts with the first two numbers of the sequence (",
+          "wall_s": 6.782367435000197,
+          "tokens_per_s": 18.872466174489453,
+          "n_response_tokens": 128,
+          "ok": true
+        },
+        {
+          "idx": 3,
+          "prompt": "Summarize the plot of Romeo and Juliet in two sentences.",
+          "response": "Romeo and Juliet are two young, passionate, and idealistic young lovers who fall in love with each other but are rejected by their families and society. They are torn between their love for each other and their desire to be accepted by society, leading to their tragic deaths.",
+          "wall_s": 3.354248709001695,
+          "tokens_per_s": 16.695243811144508,
+          "n_response_tokens": 56,
+          "ok": true
+        },
+        {
+          "idx": 4,
+          "prompt": "Write a four-line poem about the ocean.",
+          "response": "The ocean's vast and deep,\nA place of endless beauty,\nA place where the waves crash and the sea breeze blows,\nA place where the sun sets and the stars shine.",
+          "wall_s": 2.1591600730025675,
+          "tokens_per_s": 16.673150105975118,
+          "n_response_tokens": 36,
+          "ok": true
+        },
+        {
+          "idx": 5,
+          "prompt": "If all roses are flowers and some flowers fade quickly, can we conclude that some roses fade quickly? Explain.",
+          "response": "Yes, we can conclude that some roses fade quickly. If all roses are flowers and some flowers fade quickly, then roses are a subset of flowers. Therefore, some roses must also fade quickly.",
+          "wall_s": 2.5445206280019192,
+          "tokens_per_s": 15.327052007680004,
+          "n_response_tokens": 39,
+          "ok": true
+        },
+        {
+          "idx": 6,
+          "prompt": "Translate 'Good morning, how are you?' into French and Spanish.",
+          "response": "French: Bonjour, comment \u00e7a va ?\nSpanish: Hola, \u00bfc\u00f3mo est\u00e1s?",
+          "wall_s": 1.355123501001799,
+          "tokens_per_s": 14.758802415584002,
+          "n_response_tokens": 20,
+          "ok": true
+        },
+        {
+          "idx": 7,
+          "prompt": "List three benefits of regular exercise.",
+          "response": "1. Improved physical health: Regular exercise can help maintain and improve physical health, including weight management, cardiovascular health, and muscle strength.\n2. Reduced risk of chronic diseases: Exercise can help reduce the risk of chronic diseases such as heart disease, diabetes, and certain cancers.\n3. Increased energy levels: Regular exercise can help increase energy levels and improve overall energy efficiency.",
+          "wall_s": 4.270060836999619,
+          "tokens_per_s": 17.329963863464883,
+          "n_response_tokens": 74,
+          "ok": true
+        },
+        {
+          "idx": 8,
+          "prompt": "Define photosynthesis in one sentence.",
+          "response": "Photosynthesis is the process by which plants convert light energy, carbon dioxide, and water into glucose and oxygen.",
+          "wall_s": 1.4018670590012334,
+          "tokens_per_s": 15.693356840607981,
+          "n_response_tokens": 22,
+          "ok": true
+        },
+        {
+          "idx": 9,
+          "prompt": "What's the difference between a virus and a bacterium?",
+          "response": "A virus is a small, usually circular particle that can infect cells and replicate itself. It lacks cellular structure and cannot reproduce on its own. Bacteria, on the other hand, are single-celled microorganisms that can be either prokaryotic or eukaryotic. They have a cell wall, a cell membrane, and a cytoplasm, and can reproduce through binary fission. Bacteria are essential for many ecosystems and play a role in the food chain.",
+          "wall_s": 5.337837527997181,
+          "tokens_per_s": 17.98481117053039,
+          "n_response_tokens": 96,
+          "ok": true
+        }
+      ],
+      "official_perplexity": {
+        "ppl": 12.9868,
+        "stderr": 0.559,
+        "n_chunks": 4,
+        "n_ctx": 2048
+      }
+    },
+    {
+      "label": "Q4_K_M",
+      "model_path": "/home/z/my-project/comparison/Qwen-Q4_K_M.gguf",
+      "size_mib": 379.3793640136719,
+      "load_time_s": 0.36597713400260545,
+      "perplexity": {
+        "pseudo_perplexity": 12.7638,
+        "avg_nll_per_token": 2.5466130392239785,
+        "method": "llama-perplexity binary, wikitext-2 test set, 4 chunks \u00d7 2048 ctx",
+        "stderr": 0.54622
+      },
+      "perplexity_time_s": 52.2995425429981,
+      "n_generation_tests": 10,
+      "n_ok": 10,
+      "n_fail": 0,
+      "mean_latency_s": 2.468457101199965,
+      "median_latency_s": 1.7747996279995277,
+      "p95_latency_s": 5.581077566002932,
+      "mean_throughput_tokens_per_s": 19.616074422675492,
+      "median_throughput_tokens_per_s": 20.027998990391467,
+      "mean_response_tokens": 50.4,
+      "median_response_tokens": 35.0,
+      "generations": [
+        {
+          "idx": 0,
+          "prompt": "What is the capital of France?",
+          "response": "The capital of France is Paris.",
+          "wall_s": 0.5122212129972468,
+          "tokens_per_s": 13.665970526756817,
+          "n_response_tokens": 7,
+          "ok": true
+        },
+        {
+          "idx": 1,
+          "prompt": "If a shirt costs $25 and there's a 20% discount, what's the final price? Show your work.",
+          "response": "To calculate the final price after a 20% discount on a $25 shirt, follow these steps:\n\n1. Calculate the discount amount:\n   Discount = 20% of $25\n   Discount = 0.20 * $25\n   Discount = $5\n\n2. Subtract the discount from the original price:\n   Final Price = Original Price - Discount\n   Final Price = $25 - $5\n   Final Price = $20\n\nSo, the final price after the 20% discount is $20.",
+          "wall_s": 5.581077566002932,
+          "tokens_per_s": 20.78451672247177,
+          "n_response_tokens": 116,
+          "ok": true
+        },
+        {
+          "idx": 2,
+          "prompt": "Write a Python function that returns the nth Fibonacci number. Just the code.",
+          "response": "```python\ndef fibonacci(n):\n    if n <= 1:\n        return n\n    else:\n        return fibonacci(n-1) + fibonacci(n-2)\n```",
+          "wall_s": 1.7801134929977707,
+          "tokens_per_s": 19.661667718196345,
+          "n_response_tokens": 35,
+          "ok": true
+        },
+        {
+          "idx": 3,
+          "prompt": "Summarize the plot of Romeo and Juliet in two sentences.",
+          "response": "Romeo and Juliet are two young lovers who fall in love with each other but are rejected by their families and forced to live apart. They eventually meet and fall in love again, but their love is cut short when they are both killed by the same person.",
+          "wall_s": 2.57455908799966,
+          "tokens_per_s": 20.586049179076756,
+          "n_response_tokens": 53,
+          "ok": true
+        },
+        {
+          "idx": 4,
+          "prompt": "Write a four-line poem about the ocean.",
+          "response": "The ocean's vast and deep,  \nA sea of blue and green,  \nIts waves dance with the wind,  \nA symphony of the sea.",
+          "wall_s": 1.5288830610006698,
+          "tokens_per_s": 20.27624008059202,
+          "n_response_tokens": 31,
+          "ok": true
+        },
+        {
+          "idx": 5,
+          "prompt": "If all roses are flowers and some flowers fade quickly, can we conclude that some roses fade quickly? Explain.",
+          "response": "Yes, we can conclude that some roses fade quickly. If all roses are flowers and some flowers fade quickly, then roses must also be some flowers that fade quickly.",
+          "wall_s": 1.718417751002562,
+          "tokens_per_s": 19.203712240953685,
+          "n_response_tokens": 33,
+          "ok": true
+        },
+        {
+          "idx": 6,
+          "prompt": "Translate 'Good morning, how are you?' into French and Spanish.",
+          "response": "In French, the translation is: \"Bonjour, comment \u00e7a va ?\" and in Spanish, it is: \"Buenos d\u00edas, \u00bfc\u00f3mo est\u00e1s ?\"",
+          "wall_s": 1.7694857630012848,
+          "tokens_per_s": 19.77975790019091,
+          "n_response_tokens": 35,
+          "ok": true
+        },
+        {
+          "idx": 7,
+          "prompt": "List three benefits of regular exercise.",
+          "response": "1. Improved physical health: Regular exercise can help improve cardiovascular health, strengthen muscles and bones, and increase endurance.\n  2. Mental health benefits: Exercise can help reduce stress, improve mood, and increase feelings of well-being.\n  3. Increased energy levels: Regular exercise can help increase energy levels and improve overall energy efficiency.",
+          "wall_s": 3.224220680000144,
+          "tokens_per_s": 21.09036779703211,
+          "n_response_tokens": 68,
+          "ok": true
+        },
+        {
+          "idx": 8,
+          "prompt": "Define photosynthesis in one sentence.",
+          "response": "Photosynthesis is the process by which plants, algae, and some bacteria convert light energy, carbon dioxide, and water into glucose and oxygen.",
+          "wall_s": 1.4225976889974845,
+          "tokens_per_s": 19.68230387027538,
+          "n_response_tokens": 28,
+          "ok": true
+        },
+        {
+          "idx": 9,
+          "prompt": "What's the difference between a virus and a bacterium?",
+          "response": "A virus is a small, non-cellular organism that infects living cells and causes disease in hosts. It consists of a single-stranded RNA genome that can replicate independently of its host cell. Bacteria are also small, non-cellular organisms that can infect and replicate in the host cell. They consist of a single, circular chromosome surrounded by a protective cell wall. Viruses and bacteria are both classified as prokaryotes, but they differ in their genetic structure and replication mechanisms.",
+          "wall_s": 4.5729947079998965,
+          "tokens_per_s": 21.430158191209134,
+          "n_response_tokens": 98,
+          "ok": true
+        }
+      ],
+      "official_perplexity": {
+        "ppl": 12.7638,
+        "stderr": 0.54622,
+        "n_chunks": 4,
+        "n_ctx": 2048
+      }
+    },
+    {
+      "label": "Q2_K",
+      "model_path": "/home/z/my-project/comparison/Qwen-Q2_K.gguf",
+      "size_mib": 322.9213562011719,
+      "load_time_s": 0.4068967339990195,
+      "perplexity": {
+        "pseudo_perplexity": 15.8469,
+        "avg_nll_per_token": 2.7629738975981093,
+        "method": "llama-perplexity binary, wikitext-2 test set, 4 chunks \u00d7 2048 ctx",
+        "stderr": 0.69423
+      },
+      "perplexity_time_s": 51.941761099998985,
+      "n_generation_tests": 10,
+      "n_ok": 10,
+      "n_fail": 0,
+      "mean_latency_s": 2.131623043600848,
+      "median_latency_s": 1.8084521840009984,
+      "p95_latency_s": 4.005439816002763,
+      "mean_throughput_tokens_per_s": 29.646209252281363,
+      "median_throughput_tokens_per_s": 30.290334401040756,
+      "mean_response_tokens": 65.9,
+      "median_response_tokens": 54.5,
+      "generations": [
+        {
+          "idx": 0,
+          "prompt": "What is the capital of France?",
+          "response": "The capital of France is Paris.",
+          "wall_s": 0.36725724400093895,
+          "tokens_per_s": 19.060209469910696,
+          "n_response_tokens": 7,
+          "ok": true
+        },
+        {
+          "idx": 1,
+          "prompt": "If a shirt costs $25 and there's a 20% discount, what's the final price? Show your work.",
+          "response": "To calculate the final price after a 20% discount on a shirt that costs $25, you can follow these steps:\n\n1. Calculate the discount amount by multiplying the original price by the discount rate: $25 * 0.20 = $5.\n2. Subtract the discount amount from the original price to find the final price: $25 - $5 = $20.\n\nSo, the final price after a 20% discount on a shirt that costs $25 is $20.",
+          "wall_s": 3.5502305939990038,
+          "tokens_per_s": 30.420559211718153,
+          "n_response_tokens": 108,
+          "ok": true
+        },
+        {
+          "idx": 2,
+          "prompt": "Write a Python function that returns the nth Fibonacci number. Just the code.",
+          "response": "```python\ndef nth_fibonacci(n):\n    \"\"\"\n    Returns the nth Fibonacci number.\n\n    >>> nth_fibonacci(1)\n    1\n    >>> nth_fibonacci(2)\n    1\n    >>> nth_fibonacci(3)\n    2\n    >>> nth_fibonacci(4)\n    3\n    >>> nth_fibonacci(5)\n    5\n    >>> nth_fibonacci(6)\n    8\n    >>> nth_fibonacci(7)\n    13\n    >>> nth_fibonacci(8)\n    21\n    >>> nth",
+          "wall_s": 3.936238165002578,
+          "tokens_per_s": 32.51835753691397,
+          "n_response_tokens": 128,
+          "ok": true
+        },
+        {
+          "idx": 3,
+          "prompt": "Summarize the plot of Romeo and Juliet in two sentences.",
+          "response": "Romeo and Juliet are twin brothers who are forbidden by their parents to be together. They grow up and eventually meet and fall in love, but their love is not reciprocated by their parents, leading to their deaths.",
+          "wall_s": 1.5251933969993843,
+          "tokens_per_s": 30.16010959036336,
+          "n_response_tokens": 46,
+          "ok": true
+        },
+        {
+          "idx": 4,
+          "prompt": "Write a four-line poem about the ocean.",
+          "response": "The ocean, vast and deep,  \nWhispers secrets to the sky.  \nIts waves dance with the wind,  \nAnd the sun's rays shine bright.",
+          "wall_s": 1.0751288550018216,
+          "tokens_per_s": 29.76387421017156,
+          "n_response_tokens": 32,
+          "ok": true
+        },
+        {
+          "idx": 5,
+          "prompt": "If all roses are flowers and some flowers fade quickly, can we conclude that some roses fade quickly? Explain.",
+          "response": "No, we cannot conclude that some roses fade quickly based solely on the statement that all roses are flowers. Roses are flowers, but the statement about roses fading quickly is about the general condition of flowers, not about the specific condition of roses. Therefore, we cannot infer that some roses fade quickly from the given information.",
+          "wall_s": 2.0917109710026125,
+          "tokens_per_s": 30.118883953552356,
+          "n_response_tokens": 63,
+          "ok": true
+        },
+        {
+          "idx": 6,
+          "prompt": "Translate 'Good morning, how are you?' into French and Spanish.",
+          "response": "The translation of \"Good morning, how are you?\" into French is \"Bonne journ\u00e9e, comment \u00e7a va-t-il?\" and into Spanish is \"Buenas noches, \u00bfc\u00f3mo est\u00e1?\"",
+          "wall_s": 1.3834996149998915,
+          "tokens_per_s": 29.634991983718923,
+          "n_response_tokens": 41,
+          "ok": true
+        },
+        {
+          "idx": 7,
+          "prompt": "List three benefits of regular exercise.",
+          "response": "1. Improved physical health: Regular exercise can help improve physical health by reducing the risk of chronic diseases such as heart disease, diabetes, and obesity. Exercise can also help improve cardiovascular health by lowering blood pressure and improving the function of the heart and blood vessels.\n\n2. Enhanced mental health: Regular exercise can also help improve mental health by reducing stress and anxiety levels, and increasing feelings of happiness and contentment.\n\n3. Improved quality of life: Regular exercise can also improve the quality of life by increasing energy levels, improving sleep quality, and improving overall physical and mental health. Exercise can also help improve social and emotional connections by increasing social activity",
+          "wall_s": 4.005439816002763,
+          "tokens_per_s": 31.956540574797067,
+          "n_response_tokens": 128,
+          "ok": true
+        },
+        {
+          "idx": 8,
+          "prompt": "Define photosynthesis in one sentence.",
+          "response": "Photosynthesis is the process by which plants convert light energy from the sun into chemical energy, which is stored in glucose molecules, and use this energy to produce oxygen gas and release carbon dioxide.",
+          "wall_s": 1.200733396999567,
+          "tokens_per_s": 31.64732495569431,
+          "n_response_tokens": 38,
+          "ok": true
+        },
+        {
+          "idx": 9,
+          "prompt": "What's the difference between a virus and a bacterium?",
+          "response": "A virus is a microscopic infectious agent that requires a host cell to reproduce and spread. Bacteria are also microscopic infectious agents, but they are not obligate hosts and can survive without a host cell. Bacteria are typically found in soil, water, and other environments, while viruses are typically found in living organisms such as animals and humans.",
+          "wall_s": 2.180798381999921,
+          "tokens_per_s": 31.18124103597325,
+          "n_response_tokens": 68,
+          "ok": true
+        }
+      ],
+      "official_perplexity": {
+        "ppl": 15.8469,
+        "stderr": 0.69423,
+        "n_chunks": 4,
+        "n_ctx": 2048
+      }
+    }
+  ],
+  "config": {
+    "eval_prompts": [
+      "What is the capital of France?",
+      "If a shirt costs $25 and there's a 20% discount, what's the final price? Show your work.",
+      "Write a Python function that returns the nth Fibonacci number. Just the code.",
+      "Summarize the plot of Romeo and Juliet in two sentences.",
+      "Write a four-line poem about the ocean.",
+      "If all roses are flowers and some flowers fade quickly, can we conclude that some roses fade quickly? Explain.",
+      "Translate 'Good morning, how are you?' into French and Spanish.",
+      "List three benefits of regular exercise.",
+      "Define photosynthesis in one sentence.",
+      "What's the difference between a virus and a bacterium?"
+    ],
+    "perplexity_corpus_lines": 8,
+    "max_tokens": 128,
+    "temperature": 0.0,
+    "n_ctx": 512,
+    "n_threads": 2
+  },
+  "summary_table": [
+    {
+      "label": "Q8_0",
+      "size_mib": 506.5,
+      "size_pct_of_f16": 51.3,
+      "official_perplexity": 12.4899,
+      "ppl_stderr": 0.5326,
+      "mean_latency_s": 2.13,
+      "mean_throughput_tps": 26.82,
+      "n_ok": 10,
+      "n_total": 10
+    },
+    {
+      "label": "Q5_K_M",
+      "size_mib": 400.6,
+      "size_pct_of_f16": 40.5,
+      "official_perplexity": 12.9868,
+      "ppl_stderr": 0.559,
+      "mean_latency_s": 3.468,
+      "mean_throughput_tps": 16.07,
+      "n_ok": 10,
+      "n_total": 10
+    },
+    {
+      "label": "Q4_K_M",
+      "size_mib": 379.4,
+      "size_pct_of_f16": 38.4,
+      "official_perplexity": 12.7638,
+      "ppl_stderr": 0.54622,
+      "mean_latency_s": 2.468,
+      "mean_throughput_tps": 19.62,
+      "n_ok": 10,
+      "n_total": 10
+    },
+    {
+      "label": "Q2_K",
+      "size_mib": 322.9,
+      "size_pct_of_f16": 32.7,
+      "official_perplexity": 15.8469,
+      "ppl_stderr": 0.69423,
+      "mean_latency_s": 2.132,
+      "mean_throughput_tps": 29.65,
+      "n_ok": 10,
+      "n_total": 10
+    }
+  ]
+}
