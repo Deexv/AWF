@@ -5,26 +5,45 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-## NEW: Standalone GGUF Compression (10K-Tested)
+---
 
-AWF's SVD + int8 compression runs in PyTorch and reconstructs weights at load time (loads as fp32). For **true runtime file compression** — one standalone `.gguf` file with **no base model needed at runtime** — see the new GGUF module:
+## ⚠️ IMPORTANT: Two separate projects in this repo
 
-> **[`gguf_standalone/`](gguf_standalone/)** — Standalone GGUF Q4_K_M compression, verified with a real **10,000-conversation test** (100% success rate, 0 failures, 379 MiB file vs 954 MiB original, ~20 tok/s on 2-core CPU).
+This repository contains **two independent projects** that share the same
+codebase but serve completely different purposes:
 
-It includes:
-- A **Colab notebook** to compress ANY HuggingFace instruct model → standalone Q4_K_M `.gguf`
-- A **10K-conversation test harness** that proves the compressed file works without the base model
-- A **minimal `demo.py`** that chats using only the compressed `.gguf` (no PyTorch, no Transformers, no HF cache)
-- A **compression-level comparison** ([Q8_0 vs Q5_K_M vs Q4_K_M vs Q2_K](gguf_standalone/docs/COMPRESSION_LEVELS.md)) with perplexity numbers and verbatim sample responses
-- Full docs: [USAGE](gguf_standalone/docs/USAGE.md), [ARCHITECTURE](gguf_standalone/docs/ARCHITECTURE.md), [RESULTS](gguf_standalone/docs/RESULTS.md), [COMPRESSION_LEVELS](gguf_standalone/docs/COMPRESSION_LEVELS.md), [OLLAMA](gguf_standalone/docs/OLLAMA.md)
+### 1. AWF — Compression Library (`scripts/`, `awf/`)
 
-**Works with Ollama** — any `.gguf` produced here loads directly via `ollama create`. See [gguf_standalone/docs/OLLAMA.md](gguf_standalone/docs/OLLAMA.md).
+AWF is a **model compression tool**. It takes a HuggingFace model and
+compresses it 2-4× using SVD + int8 quantization. The output is a `.pt`
+checkpoint that loads in PyTorch.
 
-The companion (`companion/`) now supports `.gguf` files directly via `--gguf`, or via Ollama with `--ollama`. See [companion/README.md](companion/README.md).
+- **Purpose:** compress models
+- **Who uses it:** developers who want smaller models
+- **Entry point:** `python scripts/chat_real.py --model Qwen/Qwen2-1.5B-Instruct`
+- **Docs:** [`scripts/AWF_Chat_with_Compressed_LLMs.ipynb`](scripts/AWF_Chat_with_Compressed_LLMs.ipynb)
 
-This is the answer to AWF's known limitation #5: *"Runtime memory in PyTorch still loads as fp32 (reconstructed). For actual runtime savings, use Ollama/llama.cpp with GGUF format."*
+### 2. The Companion — PCCA (`companion/`, `main.py`)
 
-## Quick Start (3 commands)
+The Companion (PCCA — Persistent Cognitive Companion Architecture) is an
+**AI companion with human-like memory and personality**. It uses a compressed
+model (GGUF) as its language engine, but the brain, memory system,
+emotional model, and proactive behavior are entirely its own.
+
+- **Purpose:** be a persistent, proactive, emotionally-intelligent companion
+- **Who uses it:** end users who want an AI that remembers them
+- **Entry point:** `python main.py` (after editing `.env`)
+- **Docs:** [`companion/README.md`](companion/README.md), [`companion/docs/PCCA.md`](companion/docs/PCCA.md)
+
+**They are different things.** AWF compresses models. The Companion uses
+compressed models to be a real virtual character. The Companion can run
+with any LLM backend (GGUF, Ollama, or even template mode with no LLM).
+
+---
+
+## Project 1: AWF — Compression
+
+### Quick Start (3 commands)
 
 ```bash
 git clone https://github.com/Deexv/AWF.git
@@ -223,3 +242,86 @@ AWF/
 ## License
 
 Apache 2.0 — use commercially, modify freely.
+
+---
+
+## Project 2: The Companion — PCCA
+
+**Persistent Cognitive Companion Architecture** — an AI companion with
+human-like memory, emotions, and proactive behavior.
+
+### Quick Start (2 commands)
+
+```bash
+# 1. Create your .env file
+python main.py --init
+
+# 2. Edit .env — set GGUF_MODEL_PATH to your compressed model
+#    (or set OLLAMA_MODEL instead)
+
+# 3. Run
+python main.py
+```
+
+### .env Configuration
+
+All settings in one `.env` file:
+
+```env
+MODE=terminal              # or telegram
+GGUF_MODEL_PATH=/path/to/model.gguf
+TELEGRAM_BOT_TOKEN=your_token
+BRAIN_DIR=~/.pcca/brain
+COMPANION_NAME=Luna
+MAX_TOKENS=80
+```
+
+You can also override MODE at runtime:
+```bash
+python main.py --telegram   # forces Telegram mode
+python main.py --terminal   # forces terminal mode
+```
+
+### What the Companion does
+
+The companion is NOT a chatbot. It's a cognitive architecture:
+
+- **Remembers you forever** — long-term memory (L3/L4) persists across
+  restarts. Only `wipe_brain()` makes it forget.
+- **Talks like a human** — short sentences, not paragraphs. Learns your
+  preferred response length and style.
+- **Starts conversations on its own** — proactive smalltalk, reminders,
+  suggestions, advice, emergencies, predictions, opinions, concerns.
+  Fires randomly (10s–30min intervals), like a real extroverted person.
+- **Has emotions** — 12-variable synthetic affect that influences how it
+  talks, what it remembers, and when it reaches out.
+- **Multiple personalities** — partner, co-founder, assistant, coach.
+  Switch anytime with "switch to cofounder". Memory survives the switch.
+- **Remembers and references past conversations** — 5-stage retrieval
+  cascade (BM25 + ANN + graph + emotional + causal) on every input.
+- **Schedules tasks** — "remind me at 3pm", "give me news every morning".
+  If the program was off, it fires missed tasks on startup with an apology.
+- **Searches the internet** — when you ask about current events, it
+  searches immediately ("On it..."), then sends a follow-up with results.
+- **Plans complex tasks** — uses the master planning engine to generate
+  foolproof, ultra-compressed todo lists grounded with web search.
+
+### Companion docs
+
+- [`companion/README.md`](companion/README.md) — full companion README
+- [`companion/docs/PCCA.md`](companion/docs/PCCA.md) — architecture deep-dive
+- [`.env.example`](.env.example) — configuration template
+
+### Companion tests (174 passing)
+
+```bash
+python companion/tests/test_pcca.py            # 13 tests
+python companion/tests/test_brain_features.py  # 16 tests
+python companion/tests/test_memory_recall.py    # 6 tests
+python companion/tests/test_real_brain.py       # 13 tests
+python companion/tests/test_human_like.py       # 22 tests
+python companion/tests/test_deep_inventions.py  # 27 tests
+python companion/tests/test_three_features.py   # 28 tests
+python companion/tests/test_four_new.py         # 27 tests
+python companion/tests/test_scheduler_config.py # 22 tests
+```
