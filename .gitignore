@@ -57,6 +57,7 @@ logs/
 venv/
 env/
 .venv/
+.env
 env.bak/
 venv.bak/
 checkpoints/distilgpt2_compressed.pt
