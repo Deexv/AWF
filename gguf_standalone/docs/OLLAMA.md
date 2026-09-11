@@ -96,22 +96,6 @@ ollama run my-compressed-model "Hello!"
 
 ---
 
-## Using with the AWF Companion
-
-The PCCA Companion (`companion/`) now supports `.gguf` models directly via the `--gguf` flag:
-
-```bash
-# Direct GGUF (uses llama-cpp-python, no separate process)
-python -m companion.demo --gguf gguf_standalone/compressed/your-model-Q4_K_M.gguf
-
-# Or via Ollama (uses Ollama's HTTP API, requires `ollama serve`)
-python -m companion.demo --ollama my-compressed-model
-```
-
-Memory persists across model swaps — you can switch from a template-mode companion to a GGUF-backed one without losing conversation history.
-
----
-
 ## Performance comparison: `llama-cpp-python` vs `ollama`
 
 | Aspect              | `llama-cpp-python` (in-process) | `ollama` (separate server) |
