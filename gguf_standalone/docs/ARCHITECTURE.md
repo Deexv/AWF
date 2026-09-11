@@ -1,6 +1,6 @@
 # Architecture: Why Standalone Compression Works
 
-This document explains why the compressed `.gguf` files produced by this repo are truly standalone — i.e., why they do **not** require the original (uncompressed) model at runtime — and contrasts this with compression schemes that do.
+This document explains why the compressed `.gguf` files produced by this repo are truly standalone  i.e., why they do **not** require the original (uncompressed) model at runtime  and contrasts this with compression schemes that do.
 
 ---
 
@@ -8,10 +8,10 @@ This document explains why the compressed `.gguf` files produced by this repo ar
 
 | Compression family | How it works | Needs base at runtime? |
 |--------------------|--------------|------------------------|
-| **Quantization (standalone)** | Rewrite all weights to lower-precision format, save to a self-contained file | **NO** ✅ |
-| Adapter / delta | Compute a small "correction" tensor to apply on top of the base model | **YES** ❌ |
-| Pruning (sparse) | Zero out some weights, but ship them as a delta/diff | **YES** ❌ (unless dense-pruned) |
-| Distillation | Train a smaller model from scratch | **NO** ✅ (but expensive to produce) |
+| **Quantization (standalone)** | Rewrite all weights to lower-precision format, save to a self-contained file | **NO**  |
+| Adapter / delta | Compute a small "correction" tensor to apply on top of the base model | **YES**  |
+| Pruning (sparse) | Zero out some weights, but ship them as a delta/diff | **YES**  (unless dense-pruned) |
+| Distillation | Train a smaller model from scratch | **NO**  (but expensive to produce) |
 
 This repo only uses **standalone quantization** (specifically llama.cpp's GGUF Q4_K_M format).
 
@@ -41,7 +41,7 @@ The result is a new weight blob where the average bits-per-weight (BPW) is ~6.35
 
 The GGUF file format is a single binary that bundles:
 
-1. **Model architecture metadata** (number of layers, hidden size, vocabulary size, attention heads, etc.) — so the runtime knows how to construct the computation graph.
+1. **Model architecture metadata** (number of layers, hidden size, vocabulary size, attention heads, etc.)  so the runtime knows how to construct the computation graph.
 2. **The tokenizer** (vocabulary, merges, special tokens).
 3. **The chat template** (Jinja2 template string, e.g. `<|im_start|>{role}\n{content}<|im_end|>`).
 4. **All the quantized weight tensors**, in a flat key-value store.
@@ -52,7 +52,7 @@ This is the key difference from adapter-based compression: **all the information
 
 The runtime (`llama.cpp`, `llama-cpp-python`, Ollama, etc.) opens the `.gguf` file, reads the metadata to construct the model graph, mmaps the weight tensors, and runs inference. **At no point does it look for the original HF model.**
 
-You can prove this by deleting every other file on disk and running inference — it'll still work.
+You can prove this by deleting every other file on disk and running inference  it'll still work.
 
 ---
 
@@ -81,7 +81,7 @@ But to reconstruct the model, you need the original weights to apply the diff to
 
 ### Low-rank approximation (SVD-based)
 
-If you decompose `W ≈ U · V` where `U` is `n×k` and `V` is `k×m`, and ship only `U` and `V`, then technically the original `W` is gone. **This CAN be standalone** — but only if you ship the full low-rank factors and reconstruct `W = U · V` at load time.
+If you decompose `W  U · V` where `U` is `n×k` and `V` is `k×m`, and ship only `U` and `V`, then technically the original `W` is gone. **This CAN be standalone**  but only if you ship the full low-rank factors and reconstruct `W = U · V` at load time.
 
 The catch: for the approximation to be any good, `k` has to be close to `min(n, m)`, so the compression ratio is usually poor (50-70% of original). That's worse than Q4_K_M (~35% of original) and worse than Q8_0 (~50%).
 
@@ -128,7 +128,7 @@ To be very explicit, because there's been confusion:
 
 ## The math of standalone-ness
 
-Formally: a compressed artifact `C` is **standalone** if there exists a decoder function `D` such that `D(C) → M'` produces a runnable model `M'`, where `D` depends only on `C` and not on any external file or registry.
+Formally: a compressed artifact `C` is **standalone** if there exists a decoder function `D` such that `D(C)  M'` produces a runnable model `M'`, where `D` depends only on `C` and not on any external file or registry.
 
 For GGUF Q4_K_M:
 
@@ -142,7 +142,7 @@ For LoRA:
 
 ```
 D(lora_adapter) = apply_delta(W_base, lora_adapter)
-                                  ↑
+                                  
                           requires external base model
 ```
 
@@ -154,7 +154,7 @@ D(lora_adapter) = apply_delta(W_base, lora_adapter)
 
 ### "But I saw a compression demo that needed the base model!"
 
-You probably saw a LoRA / sparse-diff / adapter-based demo. Those genuinely need the base model. This repo is different — it uses quantization, which doesn't.
+You probably saw a LoRA / sparse-diff / adapter-based demo. Those genuinely need the base model. This repo is different  it uses quantization, which doesn't.
 
 ### "Then why does the Colab notebook download the base model at all?"
 

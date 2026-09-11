@@ -9,7 +9,7 @@ How to compress your own HuggingFace instruct model into a standalone `.gguf` fi
 1. Open [`notebooks/compress_model_to_gguf_q4_k_m.ipynb`](../notebooks/compress_model_to_gguf_q4_k_m.ipynb) in Google Colab (free CPU tier is fine).
 2. In the **Configuration** cell, set:
    - `MODEL_ID` to your HuggingFace model ID (e.g. `meta-llama/Llama-3.2-1B-Instruct`, `mistralai/Mistral-7B-Instruct-v0.3`, `Qwen/Qwen2.5-7B-Instruct`, etc.)
-   - `QUANT_TYPE` to `Q4_K_M` (default — best quality/size balance) or pick another from the dropdown.
+   - `QUANT_TYPE` to `Q4_K_M` (default  best quality/size balance) or pick another from the dropdown.
 3. Run all cells top-to-bottom. Total time on free Colab CPU:
    - 0.5B model: ~5 minutes
    - 1-3B model: ~10 minutes
@@ -22,7 +22,7 @@ The notebook also includes an optional cell to upload the compressed file to you
 
 ## Option 2: Local build
 
-### Step 1 — Build llama.cpp once
+### Step 1  Build llama.cpp once
 
 ```bash
 git clone https://github.com/ggerganov/llama.cpp.git
@@ -33,14 +33,14 @@ cmake .. -DGGML_NATIVE=ON -DLLAMA_BUILD_TESTS=OFF -DLLAMA_BUILD_EXAMPLES=OFF
 cmake --build . --target llama-quantize -j
 ```
 
-### Step 2 — Download the HF model
+### Step 2  Download the HF model
 
 ```bash
 pip install huggingface_hub
 hf download Qwen/Qwen2.5-0.5B-Instruct --local-dir models/Qwen2.5-0.5B-Instruct
 ```
 
-### Step 3 — Convert HF → F16 GGUF (lossless intermediate)
+### Step 3  Convert HF  F16 GGUF (lossless intermediate)
 
 ```bash
 cd /path/to/llama.cpp
@@ -48,13 +48,13 @@ python convert_hf_to_gguf.py /path/to/models/Qwen2.5-0.5B-Instruct \
     --outfile model-F16.gguf --outtype f16
 ```
 
-### Step 4 — Quantize F16 → Q4_K_M (the standalone compressed file)
+### Step 4  Quantize F16  Q4_K_M (the standalone compressed file)
 
 ```bash
 ./build/bin/llama-quantize model-F16.gguf model-Q4_K_M.gguf Q4_K_M
 ```
 
-### Step 5 — Delete the originals
+### Step 5  Delete the originals
 
 ```bash
 rm model-F16.gguf
@@ -192,4 +192,4 @@ python scripts/finalize_results.py
 cat results/final_summary.json
 ```
 
-Each chunk of 500 takes ~9 minutes on a 2-core CPU. The test is resumable — if interrupted, re-run `run_chunks.py` and it picks up from `results/progress.json`.
+Each chunk of 500 takes ~9 minutes on a 2-core CPU. The test is resumable  if interrupted, re-run `run_chunks.py` and it picks up from `results/progress.json`.

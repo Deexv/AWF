@@ -8,11 +8,11 @@
 
 ---
 
-## 📌 Core Engineering Pillars
+## Core Engineering Pillars
 
 1. **Post-Training Matrix Decomposition (SVD + INT8)**
    - Decomposes weight tensors into low-rank singular components ($W \approx U \cdot V^T$) coupled with uniform 8-bit quantization.
-   - Achieves 2.5×–4× file-size and memory reduction across production transformer architectures (**Llama 3.1**, **Qwen2**, **DeepSeek**, **GLM-4**, **Mistral**, **Phi-3**) without fine-tuning, with post-compression recovery fine-tuning support.
+   - Achieves 2.5×4× file-size and memory reduction across production transformer architectures (**Llama 3.1**, **Qwen2**, **DeepSeek**, **GLM-4**, **Mistral**, **Phi-3**) without fine-tuning, with post-compression recovery fine-tuning support.
 
 2. **Generative Weight Parameterization (Generative Implicit Indirection)**
    - Replaces traditional stored weight arrays with continuous coordinate-based generator networks (Compositional Pattern Producing Networks with Fourier features) combined with rank-residual updates:
@@ -29,7 +29,7 @@
 
 ---
 
-## 📐 Architecture & Methodological Overview
+## Architecture & Methodological Overview
 
 ```
                       +-------------------------------------------------------+
@@ -39,7 +39,7 @@
                                                   v
                       +-------------------------------------------------------+
                       |         Stage 1: Truncated SVD Decomposition          |
-                      |          W (M x N) ≈ U (M x r) @ V (r x N)            |
+                      |          W (M x N)  U (M x r) @ V (r x N)            |
                       +-------------------------------------------------------+
                                                   |
                                                   v
@@ -76,7 +76,7 @@ If $\text{Novelty}(x_t) < \epsilon$ and the block staleness counter is within th
 
 ---
 
-## 📊 Benchmark & Empirical Performance
+## Benchmark & Empirical Performance
 
 ### 1. Post-Training SVD + INT8 Compression Matrix
 
@@ -109,7 +109,7 @@ If $\text{Novelty}(x_t) < \epsilon$ and the block staleness counter is within th
 
 ---
 
-## ⚡ Quick Start
+## Quick Start
 
 ### Installation
 
@@ -148,7 +148,7 @@ python scripts/chat_real.py --model Qwen/Qwen2-1.5B-Instruct --save checkpoints/
 
 ---
 
-## 💻 Python API Usage
+## Python API Usage
 
 ### Applying SVD + INT8 Compression Programmatically
 
@@ -177,36 +177,36 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```
 AWF/
-├── awf/                                # Core AWF PyTorch Engine
-│   ├── core.py                         # Generative Implicit Indirection layers & CPPN
-│   ├── output_caching_trainer.py       # Event-driven activation caching trainer
-│   ├── block_event_trainer.py          # Block-level novelty filter & event scheduler
-│   └── combined_trainer.py            # Unified AWF + Caching trainer harness
-├── scripts/                            # Benchmark, Compression & Execution Scripts
-│   ├── chat_real.py                    # Production CLI for LLM SVD+INT8 compression
-│   ├── compress_for_pc.py              # Low-memory system optimization pipeline
-│   ├── compress_llm.py                 # Automated benchmark & perplexity evaluator
-│   ├── train.py                         # AWF training entry point from scratch
-│   └── AWF_Chat_with_Compressed_LLMs.ipynb  # Interactive Google Colab Notebook
-├── gguf_standalone/                    # Standalone GGUF & Quantization Suite
-│   ├── comparison/                     # Quantization level benchmarks (Q8_0 to Q2_K)
-│   └── docs/                           # GGUF & Ollama integration documentation
-├── docs/                               # Comprehensive Technical Documentation
-│   ├── TECHNICAL.md                    # In-depth architectural whitepaper
-│   ├── USAGE_GUIDE.md                  # Complete CLI & deployment manual
-│   └── MODEL_SUPPORT.md                # Hardware requirements & supported architectures
-├── benchmarks/                         # Verified benchmark JSON output logs
-├── LICENSE                             # Apache 2.0 License
-└── requirements.txt                    # Project dependencies
+ awf/                                # Core AWF PyTorch Engine
+    core.py                         # Generative Implicit Indirection layers & CPPN
+    output_caching_trainer.py       # Event-driven activation caching trainer
+    block_event_trainer.py          # Block-level novelty filter & event scheduler
+    combined_trainer.py            # Unified AWF + Caching trainer harness
+ scripts/                            # Benchmark, Compression & Execution Scripts
+    chat_real.py                    # Production CLI for LLM SVD+INT8 compression
+    compress_for_pc.py              # Low-memory system optimization pipeline
+    compress_llm.py                 # Automated benchmark & perplexity evaluator
+    train.py                         # AWF training entry point from scratch
+    AWF_Chat_with_Compressed_LLMs.ipynb  # Interactive Google Colab Notebook
+ gguf_standalone/                    # Standalone GGUF & Quantization Suite
+    comparison/                     # Quantization level benchmarks (Q8_0 to Q2_K)
+    docs/                           # GGUF & Ollama integration documentation
+ docs/                               # Comprehensive Technical Documentation
+    TECHNICAL.md                    # In-depth architectural whitepaper
+    USAGE_GUIDE.md                  # Complete CLI & deployment manual
+    MODEL_SUPPORT.md                # Hardware requirements & supported architectures
+ benchmarks/                         # Verified benchmark JSON output logs
+ LICENSE                             # Apache 2.0 License
+ requirements.txt                    # Project dependencies
 ```
 
 ---
 
-## 📘 Documentation Index
+## Documentation Index
 
 - **[Technical Architecture Whitepaper](docs/TECHNICAL.md)**: Deep dive into Generative Implicit Indirection, CPPN Fourier features, and output caching mechanics.
 - **[Comprehensive Usage Guide](docs/USAGE_GUIDE.md)**: Step-by-step instructions for all model families, Colab execution, and Ollama export.
@@ -216,6 +216,6 @@ AWF/
 
 ---
 
-## 📜 License
+## License
 
 Distributed under the **Apache 2.0 License**. See `LICENSE` for details.

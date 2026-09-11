@@ -2,7 +2,7 @@
 
 ## Supported Model Families
 
-AWF compression works on **any model with standard Linear/Conv1D layers** — which covers essentially all transformer-based LLMs.
+AWF compression works on **any model with standard Linear/Conv1D layers**  which covers essentially all transformer-based LLMs.
 
 ### How to Compress Each Model
 
@@ -41,7 +41,7 @@ python scripts/compress_for_pc.py --model deepseek-ai/deepseek-coder-1.3b-base -
 python scripts/compress_for_pc.py --model deepseek-ai/deepseek-llm-7b-base --target_ram 8
 ```
 
-**Architecture notes**: DeepSeek uses Llama-style transformer (RMSNorm, SwiGLU, GQA). AWF compresses all attention QKV and FFN weights. MoE models have more layers but each expert is small — compression works per-expert.
+**Architecture notes**: DeepSeek uses Llama-style transformer (RMSNorm, SwiGLU, GQA). AWF compresses all attention QKV and FFN weights. MoE models have more layers but each expert is small  compression works per-expert.
 
 ### GLM Family (ZhipuAI / ChatGLM)
 
@@ -72,7 +72,7 @@ huggingface-cli login
 python scripts/compress_for_pc.py --model meta-llama/Llama-3-8B --target_ram 8
 ```
 
-**Architecture notes**: Llama uses RMSNorm, SwiGLU, GQA. All weight matrices are compressed. The 8B model compresses to ~1.2 GB — fits on 8GB PC.
+**Architecture notes**: Llama uses RMSNorm, SwiGLU, GQA. All weight matrices are compressed. The 8B model compresses to ~1.2 GB  fits on 8GB PC.
 
 ### Mistral Family
 
@@ -87,7 +87,7 @@ huggingface-cli login
 python scripts/compress_for_pc.py --model mistralai/Mistral-7B-v0.1 --target_ram 8
 ```
 
-**Architecture notes**: Mistral uses sliding window attention + GQA. Mixtral is MoE — each expert compressed separately.
+**Architecture notes**: Mistral uses sliding window attention + GQA. Mixtral is MoE  each expert compressed separately.
 
 ### Phi Family (Microsoft)
 

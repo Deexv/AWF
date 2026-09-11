@@ -1,6 +1,6 @@
 # Using Compressed GGUF Models with Ollama
 
-**Yes — the `.gguf` files this repo produces work directly with Ollama.** No conversion, no re-bundling, no extra steps.
+**Yes  the `.gguf` files this repo produces work directly with Ollama.** No conversion, no re-bundling, no extra steps.
 
 Ollama uses llama.cpp under the hood, and GGUF is llama.cpp's native format. So any `.gguf` file you produce with the included Colab notebook (or `llama-quantize` directly) can be loaded into Ollama with a 3-line `Modelfile`.
 
@@ -45,7 +45,7 @@ PARAMETER temperature 0.7
 PARAMETER top_p 0.9
 ```
 
-The `FROM` line is the only required line — it points to your compressed `.gguf`.
+The `FROM` line is the only required line  it points to your compressed `.gguf`.
 The `TEMPLATE` and `PARAMETER` blocks are optional; Ollama will fall back to
 defaults baked into the GGUF metadata if you omit them.
 
@@ -63,7 +63,7 @@ ollama create qwen2-1-5b-instruct -f Modelfile.Qwen2-1.5B-Instruct
 ```ollama create qwen2-1-5b-instruct -f Modelfile.Qwen2-1.5B-Instruct
 
 This registers the model in Ollama's local registry. It does NOT copy the `.gguf`
-file — Ollama references it in place. If you move or delete the `.gguf`, you'll
+file  Ollama references it in place. If you move or delete the `.gguf`, you'll
 need to re-run `ollama create`.
 
 ### 5. Run it
@@ -167,7 +167,7 @@ PARAMETER stop "[INST]"
 PARAMETER stop "[/INST]"
 ```
 
-If unsure, check the model card on HuggingFace — it lists the chat template in the "Chat template" section.
+If unsure, check the model card on HuggingFace  it lists the chat template in the "Chat template" section.
 
 ### Model runs slowly
 
@@ -185,7 +185,7 @@ For `llama-cpp-python`, set `n_gpu_layers=99` when constructing the `Llama` obje
 
 The model needs RAM roughly equal to 1.5× the `.gguf` file size at runtime. For a 380 MiB GGUF, plan for ~600 MiB free RAM.
 
-If hitting OOM, use a more aggressive quantization level — see [`docs/COMPRESSION_LEVELS.md`](COMPRESSION_LEVELS.md).
+If hitting OOM, use a more aggressive quantization level  see [`docs/COMPRESSION_LEVELS.md`](COMPRESSION_LEVELS.md).
 
 ---
 
@@ -239,4 +239,4 @@ du -sh ~/.ollama/models/blobs/          # Ollama's copy
 
 The blob size should roughly match your `.gguf` file size. If it's much larger
 (e.g. ~1 GB for a 380 MiB GGUF), Ollama pulled the original model from the
-registry instead of using your compressed file — check the `FROM` line.
+registry instead of using your compressed file  check the `FROM` line.

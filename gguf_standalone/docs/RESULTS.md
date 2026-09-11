@@ -1,6 +1,6 @@
 # 10K Conversation Test Results
 
-This is the result of running **10,000 real conversations** against a **standalone compressed model** — `Qwen2.5-0.5B-Instruct-Q4_K_M.gguf` (379 MiB).
+This is the result of running **10,000 real conversations** against a **standalone compressed model**  `Qwen2.5-0.5B-Instruct-Q4_K_M.gguf` (379 MiB).
 
 The original (uncompressed) HuggingFace model was deleted before the test ran. The test script only ever opens the compressed `.gguf` file. No base model is loaded, no PyTorch, no Transformers, no adapter/delta layer.
 
@@ -66,7 +66,7 @@ The test script (`scripts/run_chunks.py`) imports only:
 from llama_cpp import Llama
 ```
 
-It never imports `transformers`, `torch`, or any HuggingFace library. It opens exactly one file — the `.gguf` — and runs 10,000 chat completions against it. The 100% success rate over 10K conversations is the proof: if the compressed file had been silently relying on a base model, those calls would have failed.
+It never imports `transformers`, `torch`, or any HuggingFace library. It opens exactly one file  the `.gguf`  and runs 10,000 chat completions against it. The 100% success rate over 10K conversations is the proof: if the compressed file had been silently relying on a base model, those calls would have failed.
 
 ---
 
@@ -76,26 +76,26 @@ The throughput was remarkably consistent across the entire 3-hour run (one sampl
 
 | Chunk range       | Avg tok/s | Failures |
 |-------------------|-----------|----------|
-| 0–499             | 20.57     | 0        |
-| 500–999           | 20.34     | 0        |
-| 1000–1499         | 20.70     | 0        |
-| 1500–1999         | 19.97     | 0        |
-| 2000–2499         | 20.24     | 0        |
-| 2500–2999         | 20.19     | 0        |
-| 3000–3499         | 19.81     | 0        |
-| 3500–3999         | 20.28     | 0        |
-| 4000–4499         | 19.79     | 0        |
-| 4500–4999         | 20.22     | 0        |
-| 5000–5499         | 20.14     | 0        |
-| 5500–5999         | 20.33     | 0        |
-| 6000–6499         | 20.18     | 0        |
-| 6500–6999         | 20.34     | 0        |
-| 7000–7499         | 20.63     | 0        |
-| 7500–7999         | 20.09     | 0        |
-| 8000–8499         | 20.52     | 0        |
-| 8500–8999         | 20.48     | 0        |
-| 9000–9499         | 20.11     | 0        |
-| 9500–9999         | 20.44     | 0        |
+| 0499             | 20.57     | 0        |
+| 500999           | 20.34     | 0        |
+| 10001499         | 20.70     | 0        |
+| 15001999         | 19.97     | 0        |
+| 20002499         | 20.24     | 0        |
+| 25002999         | 20.19     | 0        |
+| 30003499         | 19.81     | 0        |
+| 35003999         | 20.28     | 0        |
+| 40004499         | 19.79     | 0        |
+| 45004999         | 20.22     | 0        |
+| 50005499         | 20.14     | 0        |
+| 55005999         | 20.33     | 0        |
+| 60006499         | 20.18     | 0        |
+| 65006999         | 20.34     | 0        |
+| 70007499         | 20.63     | 0        |
+| 75007999         | 20.09     | 0        |
+| 80008499         | 20.52     | 0        |
+| 85008999         | 20.48     | 0        |
+| 90009499         | 20.11     | 0        |
+| 95009999         | 20.44     | 0        |
 
 No memory leaks, no degradation, no transient failures. Steady-state inference on a 2-core CPU.
 
@@ -105,16 +105,16 @@ No memory leaks, no degradation, no transient failures. Steady-state inference o
 
 A few unedited responses, chosen to span the prompt diversity. Each response is capped at 24 tokens, so they're terse but coherent.
 
-**idx=1** — *Summarize the concept of machine for a beginner in rhyming sentences.*
+**idx=1**  *Summarize the concept of machine for a beginner in rhyming sentences.*
 > A machine is a device or system designed to perform a particular task automatically, without human intervention. It can be used to
 
-**idx=4** — *If a island costs $5 and you buy 11, how much do you pay? Show your reasoning.*
+**idx=4**  *If a island costs $5 and you buy 11, how much do you pay? Show your reasoning.*
 > You would pay $5 for 11 items, so you would pay $55.
 
-**idx=9996** — *Give 3 tips for someone trying to compose on a budget.*
+**idx=9996**  *Give 3 tips for someone trying to compose on a budget.*
 > 1. Plan your budget: Before you start writing, make a list of all your expenses and their costs. This will
 
-**idx=9999** — *Name 3 famous people associated with book and what they did.*
+**idx=9999**  *Name 3 famous people associated with book and what they did.*
 > 1. Ernest Hemingway: He was a renowned American novelist and short story writer who is best known for his works
 
 A representative sample of 20 first responses and 20 last responses is in `results/sample_responses.json`. The full 10K-row CSV is in `results/conversations_master.csv`.
@@ -141,7 +141,7 @@ Or put differently: **a 60.3% reduction** with a 100% success rate over 10K real
 
 2. **The compression is real.** Not a "delta" or "adapter" that reuses the original weights at runtime. The 379 MiB Q4_K_M file contains everything: architecture, weights, tokenizer, chat template.
 
-3. **The model still produces coherent outputs.** Random samples show the model correctly answering math, generating lists, summarizing concepts, naming famous people. Quality is consistent with what you'd expect from a 0.5B Q4_K_M — short answers, sometimes truncated by the 24-token cap, but on-topic.
+3. **The model still produces coherent outputs.** Random samples show the model correctly answering math, generating lists, summarizing concepts, naming famous people. Quality is consistent with what you'd expect from a 0.5B Q4_K_M  short answers, sometimes truncated by the 24-token cap, but on-topic.
 
 4. **The runtime is stable.** No memory leaks, no degradation across 3 hours of continuous inference on a tiny 2-core box.
 

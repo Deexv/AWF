@@ -2,7 +2,7 @@
 
 ## Algorithmic Weight Fabric + Output Caching Training
 
-**Version**: 0.9 — September 2026
+**Version**: 0.9  September 2026
 **Status**: Working prototype with verified results
 
 ---
@@ -62,7 +62,7 @@ At GPT-3 scale (96 layers, d=12288):
 - AWF: ~0.45B parameters (generator ~50K amortized + low-rank per layer)
 - **Theoretical compression: 192×**
 
-This is theoretical — not yet verified at scale. The compression ratio grows linearly with the number of layers because the generator's cost is amortized.
+This is theoretical  not yet verified at scale. The compression ratio grows linearly with the number of layers because the generator's cost is amortized.
 
 ---
 
@@ -70,7 +70,7 @@ This is theoretical — not yet verified at scale. The compression ratio grows l
 
 ### 2.1 The Problem
 
-Training a transformer requires full forward + backward through every block for every batch. Most of this computation is redundant — consecutive batches produce nearly identical intermediate activations.
+Training a transformer requires full forward + backward through every block for every batch. Most of this computation is redundant  consecutive batches produce nearly identical intermediate activations.
 
 ### 2.2 Previous Approaches (v0.5-v0.7)
 
@@ -84,7 +84,7 @@ Training a transformer requires full forward + backward through every block for 
 
 ### 2.3 The Breakthrough: Output Caching (v0.8-v0.9)
 
-**Key insight**: Instead of caching weights (which still requires a matmul), cache the block's OUTPUT ACTIVATION. When the input to a block is similar to a recent input, the output will be similar too — skip the ENTIRE block.
+**Key insight**: Instead of caching weights (which still requires a matmul), cache the block's OUTPUT ACTIVATION. When the input to a block is similar to a recent input, the output will be similar too  skip the ENTIRE block.
 
 This saves: generator forward + matmul + backward = ~100% of block compute.
 
@@ -222,7 +222,7 @@ Output caching proves that most transformer block computations are redundant:
 1. **Edge AI**: A 622K model at 2.1MB can run on microcontrollers
 2. **CPU training**: 50× speedup makes CPU training viable for small models
 3. **Model distribution**: 9× smaller models are cheaper to ship/download
-4. **Research**: Faster iteration on small models → better architectures faster
+4. **Research**: Faster iteration on small models  better architectures faster
 
 ---
 

@@ -1,11 +1,11 @@
-# Compression Levels: 0.85 vs 0.5 vs 0.2 — Performance Proof
+# Compression Levels: 0.85 vs 0.5 vs 0.2  Performance Proof
 
 This document compares **four** real GGUF quantization levels of the same base model
 (`Qwen/Qwen2.5-0.5B-Instruct`) and proves what happens to file size, perplexity,
 throughput, and quality at each level.
 
 The user-requested compression levels (0.85, 0.5, 0.2) map to GGUF quantization
-levels as follows — both are ways of expressing "what fraction of the original
+levels as follows  both are ways of expressing "what fraction of the original
 information is preserved":
 
 | User-specified ratio | GGUF quant | Bits/weight (avg) | File size (% of F16) |
@@ -31,15 +31,15 @@ the same 10-prompt generation suite, and the same wikitext-2 perplexity corpus.
 
 **Key findings:**
 
-1. **Q8_0 is essentially lossless** (PPL 12.49 vs the F16 baseline ~12.5 — within noise).
+1. **Q8_0 is essentially lossless** (PPL 12.49 vs the F16 baseline ~12.5  within noise).
 2. **Q5_K_M and Q4_K_M are within 4% of Q8_0's perplexity.** Generated outputs are
    indistinguishable from the uncompressed model on most prompts.
 3. **Q2_K is ~27% worse than Q8_0** on perplexity. Outputs are still grammatical
    but lose nuance on harder prompts (math, code).
-4. **Throughput goes UP as quantization gets more aggressive** — Q2_K is the fastest
+4. **Throughput goes UP as quantization gets more aggressive**  Q2_K is the fastest
    because 2-bit matmuls are cheaper. (Q5_K_M's anomalous slowness is a known
-   llama.cpp quirk for this small model size — it disappears on larger models.)
-5. **All four produce identical answers on factual prompts** ("capital of France" →
+   llama.cpp quirk for this small model size  it disappears on larger models.)
+5. **All four produce identical answers on factual prompts** ("capital of France" 
    "Paris" in all 4). Quality differences only show up on harder reasoning.
 
 ---
@@ -48,14 +48,14 @@ the same 10-prompt generation suite, and the same wikitext-2 perplexity corpus.
 
 For each quantization level, we measured:
 
-1. **File size** — the .gguf file size on disk, compared to the F16 GGUF (988 MiB).
-2. **Perplexity** — the gold-standard metric from `llama-perplexity` on wikitext-2
+1. **File size**  the .gguf file size on disk, compared to the F16 GGUF (988 MiB).
+2. **Perplexity**  the gold-standard metric from `llama-perplexity` on wikitext-2
    test corpus (4 chunks of 2048 tokens each, identical setup across all models).
    Lower = better. PPL differences < 1.0 are typically indistinguishable.
-3. **Load time** — time to load the model into memory.
-4. **Mean latency** — average wall-clock time to generate a response on the 10-prompt suite.
-5. **Mean throughput** — average tokens/sec generated.
-6. **Sample responses** — verbatim outputs from each model on the same 10 prompts.
+3. **Load time**  time to load the model into memory.
+4. **Mean latency**  average wall-clock time to generate a response on the 10-prompt suite.
+5. **Mean throughput**  average tokens/sec generated.
+6. **Sample responses**  verbatim outputs from each model on the same 10 prompts.
 
 The 10 prompts span: factual Q&A, math, code generation, summarization, creative
 writing, reasoning, translation, list generation, definition, comparison.
@@ -67,17 +67,17 @@ writing, reasoning, translation, list generation, definition, comparison.
 ### File size
 
 ```
-F16 (original)     ████████████████████████████   988 MiB   100%
-Q8_0               ███████████████               507 MiB    51%
-Q5_K_M             ████████████                  401 MiB    41%
-Q4_K_M             ███████████▌                   379 MiB    38%
-Q2_K               █████████                       323 MiB    33%
+F16 (original)        988 MiB   100%
+Q8_0                              507 MiB    51%
+Q5_K_M                               401 MiB    41%
+Q4_K_M                                379 MiB    38%
+Q2_K                                      323 MiB    33%
 ```
 
 ### Perplexity (wikitext-2, 4×2048 token chunks, same seed)
 
 ```
-Q8_0    PPL = 12.49 ± 0.53   (baseline — essentially lossless)
+Q8_0    PPL = 12.49 ± 0.53   (baseline  essentially lossless)
 Q5_K_M  PPL = 12.99 ± 0.56   (+0.50 vs Q8_0, +4.0%)
 Q4_K_M  PPL = 12.76 ± 0.55   (+0.27 vs Q8_0, +2.2%)
 Q2_K    PPL = 15.85 ± 0.69   (+3.36 vs Q8_0, +27%)
@@ -118,7 +118,7 @@ All four models gave the same answer:
 
 > The capital of France is Paris.
 
-No degradation at any compression level. This is expected — easy factual recall
+No degradation at any compression level. This is expected  easy factual recall
 is preserved even at Q2_K.
 
 ### Prompt 2: "If a shirt costs $25 and there's a 20% discount, what's the final price? Show your work." (math)
@@ -173,7 +173,7 @@ The Q2_K version's prose is slightly less crisp but the math is right.
 > ```
 
 All four produced working recursive Fibonacci implementations. Q4_K_M was actually
-the most concise — quantization choice doesn't reliably track "code quality" on
+the most concise  quantization choice doesn't reliably track "code quality" on
 this small model.
 
 ### Prompt: "Summarize the plot of Romeo and Juliet in two sentences." (harder)
@@ -216,7 +216,7 @@ as the SVD rank fraction), here's how the GGUF quantization levels map:
 different mechanisms:
 
 - **SVD** reduces the rank of weight matrices (drops singular values). Information
-  loss is structural — small singular values that get dropped can affect specific
+  loss is structural  small singular values that get dropped can affect specific
   output capabilities disproportionately.
 - **GGUF quantization** reduces the precision of each weight value (4-bit, 5-bit,
   etc.). Information loss is uniform across the model.
@@ -237,7 +237,7 @@ why this repo recommends GGUF for runtime compression.
 | Very tight size budget (e.g. 1 GB total)      | **Q2_K**          | 33% of F16, but quality drop is visible on hard prompts |
 | Maximum quality, never mind size              | (use F16 directly)| No quantization at all         |
 
-**Default recommendation: Q4_K_M.** It's the sweet spot — only 4 percentage points
+**Default recommendation: Q4_K_M.** It's the sweet spot  only 4 percentage points
 worse than Q8_0 on file size, but effectively identical quality.
 
 ---
